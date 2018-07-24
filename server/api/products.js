@@ -30,9 +30,7 @@ router.get('/categories/:categoryId', async (req, res, next) => {
     const eagerLoading = await Category.find({
         where: {id: id},
         include: [{
-          model: Product,
-          // through: { where: {productId: 1}},
-          // attributes: ['title']
+          model: Product
         }]
    })
    const results = eagerLoading.products
