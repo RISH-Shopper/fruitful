@@ -13,8 +13,8 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
  // Dan was here ;)
 
 const products = {
-  allProducts = [],
-  singleProduct = {}
+  allProducts: [],
+  singleProduct: {}
 }
 
 /**

@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import ProdudctCard from './ProductCard'
+import ProductCard from './ProductCard';
 
 const productDummyData = [
 
@@ -28,19 +30,17 @@ const productDummyData = [
 export const Products = props => {
 
   const products = props.products ? props.products : productDummyData
-  console.log('**************', products)
+
 	return (
 		<div>
-		  <h1> PRODUCTS </h1>
-		    <div>
-		      {
-			  products.map(product => (
-				<div key={product.id}><Link to={`/products/${product.id}`}> {product.title}</Link>
-				  <img src={product.photo} height= {200}/>
-				   <p>{product.price}</p></div>
-			  ))
-		      }
-		   </div>
+		  <h1>PRODUCTS</h1>
+      <ul>
+        {
+          products.map(product => (
+            <ProductCard product={product} key={product.id} />
+          ))
+        }
+      </ul>
 		</div>
 		)
 }
