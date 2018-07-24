@@ -9,6 +9,9 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 /**
  * INITIAL STATE
  */
+
+ // Dan was here ;)
+
 const products = {
   allProducts = [],
   singleProduct = {}
