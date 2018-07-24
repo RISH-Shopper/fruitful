@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Product, Category} = require('../server/db/models')
 
 /**
  * Welcome to the seed file! This seed file uses a newer language feature called...
@@ -28,7 +28,87 @@ async function seed() {
   // and store the result that the promise resolves to in a variable! This is nice!
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
+
+  const mango = await Product.create({
+    title: 'Mango',
+    description: 'insert description here',
+    price: 500,
+    inventory: 10,
+  })
+
+  const apple = await Product.create({
+    title: 'Apple',
+    description: 'insert description here',
+    price: 500,
+    inventory: 10,
+  })
+
+  const grapefruit = await Product.create({
+    title: 'Grapefruit',
+    description: 'insert description here',
+    price: 500,
+    inventory: 10,
+  })
+
+  const pineapple = await Product.create({
+    title: 'Pineapple',
+    description: 'insert description here',
+    price: 500,
+    inventory: 10,
+  })
+
+  const peach = await Product.create({
+    title: 'Peach',
+    description: 'insert description here',
+    price: 500,
+    inventory: 10,
+  })
+
+  // const asia = await Category.create({
+  //   title: 'Asia',
+  //   description: 'category description here'
+  // })
+
+  // const africa = await Category.create({
+  //   title: 'Africa',
+  //   description: 'category description here'
+  // })
+
+  // const americas = await Category.create({
+  //   title: 'Americas',
+  //   description: 'category description here'
+  // })
+
+  const stonefruit = await Category.create({
+    title: 'Stone fruit',
+    description: 'I have a pit!'
+  })
+
+  const citrus = await Category.create({
+    title: 'Citrus',
+    description: `I'm tarty!`
+  })
+
+  const tropical = await Category.create({
+    title: 'Tropical',
+    description: `I love warm weather!`
+  })
+
+  const classic = await Category.create({
+    title: 'Classic',
+    description: `I'm a childhood favorite!`
+  })
+
+  await Promise.all([
+    stonefruit.addProducts([mango, peach]),
+    citrus.addProduct(grapefruit),
+    tropical.addProducts([mango, pineapple]),
+    classic.addProduct(apple)
+  ])
+
+  console.log('Success! Product database is seeded!')
 }
+
 
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
