@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Product, User} = require('../db/models')
+const {Product, User, Category} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -27,6 +27,25 @@ router.get('/:productId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/categories/:categoryId', async (req, res, next) => {
+  try {
+    const id = req.params.categoryId
+    console.log('starting category api call for categoryId',id)
+    const eagerLoading = await Category.find({
+        where: {id: id},
+        include: [{
+          model: Product
+        }]
+   })
+   const results = eagerLoading.products
+    res.json(results)
+  } catch (err) {
+    next(err)
+  }
+})
+
+
 
 
 
