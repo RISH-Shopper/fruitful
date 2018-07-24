@@ -17,6 +17,11 @@ router.get('/:productId', async (req, res, next) => {
     console.log('starting single products api call')
     const id = req.params.productId
     const product = await Product.findById(id)
+    if (!product) {
+      const err = new Error('Product not found!')
+      err.status = 404
+      return next(err)
+    }
     res.json(product)
   } catch (err) {
     next(err)
