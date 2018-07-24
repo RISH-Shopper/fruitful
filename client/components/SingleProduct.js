@@ -1,13 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import Products from './Products'
 //import thunks from store once created
 
 class SingleProduct extends React.Component{
 	constructor(){
-		super()
+		super();
 		this.state = {quantity:''}
-  }
+	}
 
   handleChange(event) {
     this.setState({ [event.target.quantity]: event.target.value });
@@ -60,6 +60,7 @@ render(){
 
 
 
+>>>>>>> master
 }
 
 

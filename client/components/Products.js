@@ -25,11 +25,10 @@ const productDummyData = [
       inventory: 10
       },
 ]
-
-const Products = props => {
+export const Products = props => {
 
   const products = props.products ? props.products : productDummyData
-
+  console.log('**************', products)
 	return (
 		<div>
 		  <h1> PRODUCTS </h1>
@@ -52,4 +51,5 @@ const Products = props => {
 
 // export default connect(mapStateToProps)(Products)
 
-export default Products
+
+
