@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import ProdudctCard from './ProductCard'
 import ProductCard from './ProductCard'
 
 // const productDummyData = [
