@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 const categoryDummyData = [
-
   {id: 1,
   title: 'Yellow',
   description: 'I am Yellow',
@@ -20,28 +19,28 @@ const categoryDummyData = [
   title: 'Orange',
   description: 'I am Orange',
   },
-
-
 ]
 
 const Sidebar = props => {
-  const categories = categoryDummyData
-  // const categories = props.categories
-	console.log('categories', categories);
-	return categories? (
+  // const categories = categoryDummyData
+  console.log(props.categories)
+  const categories = props.categories
+	return categories.length > 0 ? (
 		<div>
 			<h1>CATEGORIES</h1>
 			<ul>
-				{categories.map(category => (
-					<h3 key={category.id}>{category.name}</h3>
-				))}
+				{categories.map(category => {
+          const categoryLink = '/products/categories/' + category.id
+          return (<Link to={categoryLink} key={category.id}> <h3>{category.title}</h3> </Link>)
+        }
+				)}
 			</ul>
 		</div>
 	) : null
 }
 
 const mapStateToProps = (state) => {
-	return state.categories
+	return {categories: state.categories}
 }
 
 export default connect(mapStateToProps)(Sidebar)
