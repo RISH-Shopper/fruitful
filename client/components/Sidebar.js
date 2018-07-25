@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import selectCategory from '../store/category'
+import {selectCategory} from '../store/category'
 
 const categoryDummyData = [
   {id: 1,
@@ -22,31 +22,38 @@ const categoryDummyData = [
   },
 ]
 
-const dummyFunction = (event) => {
-  const categoryId = event.target.value
-  console.log('You have selected ',categoryId)
+
+
+  class Sidebar extends Component {
+
+    handleClick = (event) => {
+      const categoryId = event.target.value
+      this.props.selectCategory(categoryId)
+      console.log('You have selected ',categoryId)
+      console.log('this.props.selectedCategory', this.props.selectedCategory)
+      }
+
+    render() {
+    if (this.props.categories) {
+    const categories = this.props.categories
+
+    return (
+      <div className="sidebar">
+        <h2>CATEGORIES</h2>
+        <ul>
+          {categories.map(category => {
+            return (<div key={category.id}><button type="button" value={category.id} onClick={this.handleClick}>{category.title}</button></div>)
+          }
+          )}
+        <hr/>
+        <div><button type="button" value={null} onClick={this.handleClick}>View All</button></div>
+        </ul>
+      </div>
+    )
+    } else {return 'loading categories'}
   }
-
-const Sidebar = props => {
-  console.log(props)
-  if (props.categories) {
-  const categories = props.categories
-
-	return (
-		<div className="sidebar">
-			<h2>CATEGORIES</h2>
-			<ul>
-				{categories.map(category => {
-          return (<div key={category.id}><button type="button" value={category.id} onClick={dummyFunction}>{category.title}</button></div>)
-        }
-        )}
-      <hr/>
-      <div><button type="button" value={null} onClick={dummyFunction}>View All</button></div>
-			</ul>
-		</div>
-  )
-  } else {return 'loading categories'}
 }
+
 
 const mapStateToProps = (state) => {
 	return {
@@ -57,7 +64,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectCategory: categoryId => dispatch(selectCategory(categoryId))
+    selectCategory: categoryId => {
+      dispatch(selectCategory(categoryId))
+    }
   }
 }
 
