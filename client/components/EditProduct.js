@@ -4,20 +4,24 @@ import { updateProduct } from '../store/product'
 import Form from './Form'
 
 class EditProduct extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
+    const productId = +props.match.params.productId
+    const selectedProduct = props.products.find(product => product.id === productId)
     this.state = {
-      title: '',
-      description: '',
-      price: '',
-      inventory: '',
-      photo: ''
+      title: '' || selectedProduct.title,
+      description: '' || selectedProduct.description,
+      price: '' || selectedProduct.price,
+      inventory: '' || selectedProduct.inventory,
+      photo: '' || selectedProduct.photo
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange (evt) {
+    console.log('props-----', this.props.products)
     this.setState({
       [evt.target.name]: evt.target.value
     })
@@ -32,6 +36,7 @@ class EditProduct extends Component {
   }
 
   render () {
+    console.log('PROOOOOPPPPPSSSSS', this.props)
     const { products } = this.props
     const productId = +this.props.match.params.productId
     const selectedProduct = products.find(product => product.id === productId)
@@ -55,10 +60,9 @@ class EditProduct extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
-    products: state.products
+    products: state.products.products
   }
 }
 
