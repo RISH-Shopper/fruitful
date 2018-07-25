@@ -30,7 +30,7 @@ import Sidebar from './Sidebar'
 // ]
 
 const Products = props => {
-	console.log('prod', props);
+	console.log('prod', props.products);
 	return props.products ? (
 		<div className= "products">
       <Sidebar />

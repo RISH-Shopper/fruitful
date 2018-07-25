@@ -4,6 +4,7 @@ import axios from 'axios'
  * ACTION TYPES
  */
 const SET_CATEGORIES = 'SET_CATEGORIES'
+const SELECT_CATEGORY = 'SELECT_CATEGORY'
 
 /**
  * INITIAL STATE
@@ -11,12 +12,16 @@ const SET_CATEGORIES = 'SET_CATEGORIES'
 
  // Dan was here ;)
 
-const initialState = {}
+const initialState = {
+  categories: [],
+  selectedCategory: 0
+}
 
 /**
  * ACTION CREATORS
  */
 const setCategories = categories => ({type: SET_CATEGORIES, categories})
+const selectCategory = categoryId => ({type: SELECT_CATEGORY, categoryId})
 
 /**
  * THUNK CREATORS
@@ -36,6 +41,7 @@ export const getCategories = () => {
   };
 };
 
+
 /**
  * REDUCER
  */
@@ -43,6 +49,8 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SET_CATEGORIES:
       return {...state, categories: action.categories}
+    case SELECT_CATEGORY:
+      return {...state, selectedCategory: action.categoryId}
     default:
       return state
   }
