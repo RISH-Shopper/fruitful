@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 //import thunks from store once created
 
 class SingleProduct extends React.Component {
@@ -13,26 +14,40 @@ class SingleProduct extends React.Component {
 	}
 
 	render() {
-		console.log('here')
 		const {product} = this.props
-		return product ? (
+		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-					<label>{product.title}</label>
-					<img src={product.photo} />
-					<p>{product.description}</p>
-					<select name="quantity" onChange={this.handleChange}>
-						<option value="">--</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-					<button type="submit">Add to Cart</button>
-				</form>
+				{product ?
+					(
+						<div>
+							<form onSubmit={this.handleSubmit}>
+								<label>{product.title}</label>
+								<img src={product.photo} />
+								<p>{product.description}</p>
+								<select name="quantity" onChange={this.handleChange}>
+									<option value="">--</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+								<button type="submit">Add to Cart</button>
+							</form>
+							<div>
+								<Link to={`products/${product.id}/edit`}>
+									<button type='button'>Edit Product</button>
+								</Link>
+							</div>
+						</div>
+					) : (
+						<div>
+							<p>Product does not exist!</p>
+						</div>
+					)
+				}
 			</div>
-		) : null
+		)
 	}
 }
 
