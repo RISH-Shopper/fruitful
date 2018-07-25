@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ProductCard from './ProductCard'
+import Search from './Search'
 
 // const productDummyData = [
 
@@ -31,6 +32,7 @@ const Products = props => {
 	console.log('prod', props);
 	return props.products ? (
 		<div>
+      <Search />
 			<h1>PRODUCTS</h1>
 			<ul>
 				{props.products.map(product => (
