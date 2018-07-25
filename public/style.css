@@ -19,3 +19,12 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.sidebar {
+  background-color: rgb(218, 218, 218);
+  color: rgb(33, 30, 49);
+}
+
+.products {
+  display: flex
+}
