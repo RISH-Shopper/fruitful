@@ -30,11 +30,10 @@ export const editProduct = product => ({type: EDIT_PRODUCT, product})
  * THUNK CREATORS
  */
 export const getProducts = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      const response = await axios.get('/api/products');
-      const products = response.data;
-      const action = setProducts(products);
+      const {data} = await axios.get('/api/products');
+      const action = setProducts(data);
       dispatch(action);
     }
     catch (error){
@@ -69,7 +68,7 @@ export default function(state = initialState, action) {
     case SET_PRODUCTS:
       return { ...state, products: action.products }
     case ADD_PRODUCT:
-      return { ...state, products: [...state.products, action.product]}
+      return { ...state, products: [...state.products, action.product] }
     case EDIT_PRODUCT:
       return { ...state, products: [...state.products].map(product => {
         if (product.id === action.product.id) return action.product

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ProductCard from './ProductCard'
 import Search from './Search'
 import Sidebar from './Sidebar'
+import { getProducts } from '../store/product'
 
 // const productDummyData = [
 
@@ -29,26 +30,53 @@ import Sidebar from './Sidebar'
 //       },
 // ]
 
-const Products = props => {
-	console.log('prod', props);
-	return props.products ? (
-		<div className= "products">
-      <Sidebar />
-      <div>
-        <Search />
-        <h1>PRODUCTS</h1>
-        <ul>
-          {props.products.map(product => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </ul>
-      </div>
-		</div>
-	) : null
+class Products extends Component {
+  componentDidMount () {
+    this.props.getProducts()
+  }
+
+  render () {
+    const { products } = this.props
+    console.log('PRODUCTS------', products)
+
+    if (!products.length) {
+      return (
+        <div>
+          <p>There are currently no available products.</p>
+        </div>
+      )
+    } else {
+      return (
+        <div className= "products">
+          <Sidebar />
+          <div>
+            <Search />
+            <h1>PRODUCTS</h1>
+            <ul>
+              {products.map(product => (
+                <ProductCard product={product} key={product.id} />
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
+    }
+  }
 }
 
 const mapStateToProps = (state) => {
-	return state.products
+	return {
+    products: state.products.products
+  }
 }
 
-export default connect(mapStateToProps)(Products)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProducts: () => dispatch(getProducts())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Products)
