@@ -7,33 +7,48 @@ class Search extends React.Component {
   constructor() {
     super();
     this.state = {
-      productTitle: ''
+      productTitle: '',
+      redirect: false,
+      productToSearch: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.setRedirect = this.setRedirect.bind(this)
+    this.renderRedirect = this.renderRedirect.bind(this)
   }
   handleChange(event) {
     this.setState({ productTitle: event.target.value })
+  }
+  setRedirect() {
+    this.setState({
+      redirect: true
+    });
+
+  }
+  renderRedirect() {
+    if (this.state.redirect && this.state.productToSearch) {
+      return <Redirect to={`/products/${this.state.productToSearch.id}`} />
+    }
+
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const searchProduct = this.props.products.filter(elem => elem.title === this.state.productTitle)
     const searchedForProduct = searchProduct[0]
-    if (!searchProduct[0]){
+    if (!searchedForProduct){
       console.log("NO PRODUCT NAME FOUND")
     }else{
-      console.log("YOU ARE LOOKING FOR: ", searchedForProduct.id)
-      this.props.history.push(`/products/${searchedForProduct.id}`)
+      this.setState({ productToSearch: searchedForProduct })
+      this.setRedirect();
     }
 
   }
 
   render() {
-
-    console.log("SEARCH", this.props)
     return (
       <div>
+                {this.renderRedirect()}
         <form onSubmit={this.handleSubmit}>
           <label> Search for a product: </label>
           <input
