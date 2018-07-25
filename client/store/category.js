@@ -46,10 +46,12 @@ export const getCategories = () => {
  * REDUCER
  */
 export default function(state = initialState, action) {
+  console.log('Action type:', action.type)
   switch (action.type) {
     case SET_CATEGORIES:
       return {...state, categories: action.categories}
     case SELECT_CATEGORY:
+      console.log(`Let's select a category!`)
       return {...state, selectedCategory: action.categoryId}
     default:
       return state

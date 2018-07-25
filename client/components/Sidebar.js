@@ -22,24 +22,26 @@ const categoryDummyData = [
   },
 ]
 
-const dummyFunction = () => {
-  console.log('You have selected a category!',)
+const dummyFunction = (event) => {
+  const categoryId = event.target.value
+  console.log('You have selected ',categoryId)
   }
 
 const Sidebar = props => {
   console.log(props)
   if (props.categories) {
   const categories = props.categories
+
 	return (
 		<div className="sidebar">
 			<h2>CATEGORIES</h2>
 			<ul>
 				{categories.map(category => {
-          return (<div key={category.id}><button type="button" onClick={dummyFunction}>{category.title}</button></div>)
+          return (<div key={category.id}><button type="button" value={category.id} onClick={dummyFunction}>{category.title}</button></div>)
         }
         )}
       <hr/>
-      <div><button type="button" onClick={dummyFunction}>View All</button></div>
+      <div><button type="button" value={null} onClick={dummyFunction}>View All</button></div>
 			</ul>
 		</div>
   )
