@@ -55,7 +55,7 @@ export const createProduct = (product, history) => {
 export default function(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCTS:
-      return {...state, products: action.products}
+      return { ...state, products: action.products }
     case ADD_PRODUCT:
       return { ...state, products: [...state.products, action.product]}
     default:

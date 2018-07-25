@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import product, { createProduct } from '../store/product'
+import { createProduct } from '../store/product'
 import Form from './Form'
 
 class AddProduct extends Component {
@@ -50,7 +50,7 @@ class AddProduct extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    createProduct: prodcut => dispatch(createProduct(product, ownProps.history))
+    createProduct: product => dispatch(createProduct(product, ownProps.history))
   }
 }
 
