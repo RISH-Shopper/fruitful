@@ -30,6 +30,7 @@ import { getProducts } from '../store/product'
 //       },
 // ]
 
+<<<<<<< HEAD
 class Products extends Component {
   componentDidMount () {
     this.props.getProducts()
@@ -62,6 +63,24 @@ class Products extends Component {
       )
     }
   }
+=======
+const Products = props => {
+	console.log('prod', props.products);
+	return props.products ? (
+		<div className= "products">
+      <Sidebar />
+      <div>
+        <Search />
+        <h1>PRODUCTS</h1>
+        <ul>
+          {props.products.map(product => (
+            <ProductCard product={product} key={product.id} />
+          ))}
+        </ul>
+      </div>
+		</div>
+	) : null
+>>>>>>> 98534834d594fbdd63da1ecaaf3d710ba6bd5d77
 }
 
 const mapStateToProps = (state) => {
