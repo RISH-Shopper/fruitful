@@ -2,6 +2,8 @@ const router = require('express').Router()
 const {Product, User, Category} = require('../db/models')
 module.exports = router
 
+
+
 router.get('/', async (req, res, next) => {
   try {
     console.log('starting all products api call')
@@ -49,6 +51,16 @@ router.get('/categories/:categoryId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/add', async (req, res, next) => {
+  try {
+    const newProduct = await Product.create(req.body)
+    console.log(req.body);
+    res.status(201)
+    res.send(newProduct)
+  } catch (err){next(err);}
+})
+
 
 
 
