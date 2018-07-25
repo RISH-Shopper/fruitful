@@ -38,6 +38,11 @@ router.get('/categories/:categoryId', async (req, res, next) => {
           model: Product
         }]
    })
+   if (!eagerLoading) {
+    const err = new Error('Category not found!')
+    err.status = 404
+    return next(err)
+  }
    const results = eagerLoading.products
     res.json(results)
   } catch (err) {
