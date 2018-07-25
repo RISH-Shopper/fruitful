@@ -22,12 +22,12 @@ const categoryDummyData = [
 ]
 
 const Sidebar = props => {
-  // const categories = categoryDummyData
   console.log(props.categories)
+  if (props.categories) {
   const categories = props.categories
-	return categories.length > 0 ? (
-		<div>
-			<h1>CATEGORIES</h1>
+	return (
+		<div className="sidebar">
+			<h2>CATEGORIES</h2>
 			<ul>
 				{categories.map(category => {
           const categoryLink = '/products/categories/' + category.id
@@ -36,11 +36,12 @@ const Sidebar = props => {
 				)}
 			</ul>
 		</div>
-	) : null
+  )
+  } else {return 'loading categories'}
 }
 
 const mapStateToProps = (state) => {
-	return {categories: state.categories}
+	return state.categories
 }
 
 export default connect(mapStateToProps)(Sidebar)

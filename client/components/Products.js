@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ProductCard from './ProductCard'
 import Search from './Search'
+import Sidebar from './Sidebar'
 
 // const productDummyData = [
 
@@ -31,14 +32,17 @@ import Search from './Search'
 const Products = props => {
 	console.log('prod', props);
 	return props.products ? (
-		<div>
-      <Search />
-			<h1>PRODUCTS</h1>
-			<ul>
-				{props.products.map(product => (
-					<ProductCard product={product} key={product.id} />
-				))}
-			</ul>
+		<div className= "products">
+      <Sidebar />
+      <div>
+        <Search />
+        <h1>PRODUCTS</h1>
+        <ul>
+          {props.products.map(product => (
+            <ProductCard product={product} key={product.id} />
+          ))}
+        </ul>
+      </div>
 		</div>
 	) : null
 }
