@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import product, { createProduct } from '../store/product'
 import Form from './Form'
 
 class AddProduct extends Component {
@@ -12,6 +13,8 @@ class AddProduct extends Component {
       inventory: '',
       photo: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange (evt) {
@@ -24,6 +27,7 @@ class AddProduct extends Component {
     evt.preventDefault()
     const { title, description, price, inventory, photo } = this.state
 
+    this.props.createProduct({ title, description, price, inventory, photo })
   }
 
   render () {
@@ -44,4 +48,13 @@ class AddProduct extends Component {
   }
 }
 
-export default
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    createProduct: prodcut => dispatch(createProduct(product, ownProps.history))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddProduct)

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Form = (props) => {
   return (
-    <form>
+    <form onSubmit={props.handleSubmit}>
       <div>
         <div>
           <label htmlFor='form'>Name</label>
