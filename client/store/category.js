@@ -20,8 +20,8 @@ const initialState = {
 /**
  * ACTION CREATORS
  */
-const setCategories = categories => ({type: SET_CATEGORIES, categories})
-const selectCategory = categoryId => ({type: SELECT_CATEGORY, categoryId})
+export const setCategories = categories => ({type: SET_CATEGORIES, categories})
+export const selectCategory = categoryId => ({type: SELECT_CATEGORY, categoryId})
 
 /**
  * THUNK CREATORS
@@ -31,7 +31,6 @@ export const getCategories = () => {
     try {
       const response = await axios.get('/api/categories');
       const categories = response.data;
-      console.log('CATEGORIES', categories)
       const action = setCategories(categories);
       dispatch(action);
     }
@@ -46,7 +45,6 @@ export const getCategories = () => {
  * REDUCER
  */
 export default function(state = initialState, action) {
-  console.log('Action type:', action.type)
   switch (action.type) {
     case SET_CATEGORIES:
       return {...state, categories: action.categories}
