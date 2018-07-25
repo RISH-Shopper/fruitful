@@ -3,8 +3,7 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-const GET_PRODUCTS = 'GET_PRODUCTS'
-const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
+const SET_PRODUCTS = 'SET_PRODUCTS'
 
 /**
  * INITIAL STATE
@@ -12,15 +11,12 @@ const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT'
 
  // Dan was here ;)
 
-const products = {
-  allProducts: [],
-  singleProduct: {}
-}
+const initialState = {}
 
 /**
  * ACTION CREATORS
  */
-const getProducts = products => ({type: GET_PRODUCTS, products})
+const setProducts = products => ({type: SET_PRODUCTS, products})
 
 /**
  * THUNK CREATORS
@@ -30,7 +26,7 @@ export const getProducts = () => {
     try {
       const response = await axios.get('/api/products');
       const products = response.data;
-      const action = gotProductsFromServer(products);
+      const action = setProducts(products);
       dispatch(action);
     }
     catch (error){
@@ -42,10 +38,10 @@ export const getProducts = () => {
 /**
  * REDUCER
  */
-export default function(state = products, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_PRODUCTS:
-      return action.products
+    case SET_PRODUCTS:
+      return {...state, products: action.products}
     default:
       return state
   }

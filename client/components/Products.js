@@ -1,55 +1,50 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import ProdudctCard from './ProductCard'
-import ProductCard from './ProductCard';
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import ProductCard from './ProductCard'
 
-const productDummyData = [
+// const productDummyData = [
 
-  {id: 1,
-  title: 'DummyKiwi',
-  photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
-  price: 500,
-  inventory: 10
-  },
+//   {id: 1,
+//   title: 'DummyKiwi',
+//   photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
+//   price: 500,
+//   inventory: 10
+//   },
 
-  {id: 2,
-    title: 'DummyBlueberry',
-    photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
-    price: 600,
-    inventory: 10
-    },
+//   {id: 2,
+//     title: 'DummyBlueberry',
+//     photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
+//     price: 600,
+//     inventory: 10
+//     },
 
-    {id: 3,
-      title: 'DummyWatermelon',
-      photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
-      price: 600,
-      inventory: 10
-      },
-]
-export const Products = props => {
+//     {id: 3,
+//       title: 'DummyWatermelon',
+//       photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
+//       price: 600,
+//       inventory: 10
+//       },
+// ]
 
-  const products = props.products ? props.products : productDummyData
-
-	return (
+const Products = props => {
+	console.log('prod', props);
+	return props.products ? (
 		<div>
-		  <h1>PRODUCTS</h1>
-      <ul>
-        {
-          products.map(product => (
-            <ProductCard product={product} key={product.id} />
-          ))
-        }
-      </ul>
+			<h1>PRODUCTS</h1>
+			<ul>
+				{props.products.map(product => (
+					<ProductCard product={product} key={product.id} />
+				))}
+			</ul>
 		</div>
-		)
+	) : null
 }
 
-// const mapStateToProps = (state) => {
-// 	return state.products
-// }
+const mapStateToProps = (state) => {
+	return {
+    products: state.products
+  }
+}
 
-// export default connect(mapStateToProps)(Products)
-
-
-
+export default connect(mapStateToProps)(Products)
