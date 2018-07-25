@@ -42,7 +42,9 @@ const Products = props => {
 }
 
 const mapStateToProps = (state) => {
-	return state.products
+	return {
+    products: state.products
+  }
 }
 
 export default connect(mapStateToProps)(Products)
