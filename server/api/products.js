@@ -7,7 +7,9 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     console.log('starting all products api call')
-    const products = await Product.findAll()
+    const products = await Product.findAll({
+      include: [{ model: Category}]
+    })
     res.json(products)
   } catch (err) {
     next(err)
