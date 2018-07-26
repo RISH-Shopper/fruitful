@@ -34,6 +34,7 @@ async function seed() {
     description: 'insert description here',
     price: 500,
     inventory: 10,
+    photo: "http://www.sqm.com/portals/0/img/fotos_200x200px/mango.jpg"
   })
 
   const apple = await Product.create({
@@ -41,6 +42,7 @@ async function seed() {
     description: 'insert description here',
     price: 500,
     inventory: 10,
+    photo: "https://newenglandapples.files.wordpress.com/2014/10/gala.png"
   })
 
   const grapefruit = await Product.create({
@@ -48,6 +50,7 @@ async function seed() {
     description: 'insert description here',
     price: 500,
     inventory: 10,
+    photo: "http://3.bp.blogspot.com/-W2cGr1NIb0s/TimfQiQbWWI/AAAAAAAAAHA/1Yl3zPK8cYM/s200/grapefruit.jpg"
   })
 
   const pineapple = await Product.create({
@@ -55,6 +58,7 @@ async function seed() {
     description: 'insert description here',
     price: 500,
     inventory: 10,
+    photo: "https://parent.guide/wp-content/uploads/2014/07/Pineapple-small-image.jpg"
   })
 
   const peach = await Product.create({
@@ -62,6 +66,8 @@ async function seed() {
     description: 'insert description here',
     price: 500,
     inventory: 10,
+    photo: "https://images.parents.mdpcdn.com/sites/parents.com/files/styles/width_200/public/images/550_101735284.jpg"
+
   })
 
   // const asia = await Category.create({
