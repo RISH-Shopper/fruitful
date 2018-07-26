@@ -28,3 +28,9 @@ form div {
 .products {
   display: flex
 }
+
+.productCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
