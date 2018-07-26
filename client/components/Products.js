@@ -35,6 +35,7 @@ class Products extends Component {
     this.props.getProducts()
   }
 
+
   filterByCategory = products => ( products.filter( product => {
     const productCategories = product.categories.map(category => category.id)
     return productCategories.includes(+this.props.categories.selectedCategory)
@@ -42,13 +43,13 @@ class Products extends Component {
   )
 
   render () {
+    // Needs to be "let" rather than const so that we can change when filtering
     let { products } = this.props
 
+    // Filters by category if there is a selected category
     if (this.props.categories.selectedCategory) {
       products = this.filterByCategory(products)
     }
-
-    console.log('PRODUCTS------', products)
 
     if (!products.length) {
       return (
