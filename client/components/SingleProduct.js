@@ -35,7 +35,7 @@ class SingleProduct extends React.Component {
 								<button type="submit">Add to Cart</button>
 							</form>
 							<div>
-								<Link to={`products/${product.id}/edit`}>
+								<Link to={`/products/${product.id}/edit`}>
 									<button type='button'>Edit Product</button>
 								</Link>
 							</div>
