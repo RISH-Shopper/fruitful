@@ -6,7 +6,7 @@ router.get('/', async (req, res, next) => {
   try {
     console.log('starting all categories api call')
     const categories = await Category.findAll()
-    res.json(categories)
+    res.status(200).json(categories)
   } catch (err) {
     next(err)
   }
@@ -22,7 +22,7 @@ router.get('/:categoryId', async (req, res, next) => {
       err.status = 404
       return next(err)
     }
-    res.json(category)
+    res.status(200).json(category)
   } catch (err) {
     next(err)
   }
