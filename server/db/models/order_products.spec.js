@@ -47,8 +47,11 @@ describe('OrderProducts model', () => {
       }
   )
 
-    it('has a quantity attribute', () => {
+    it('has the correct attributes', () => {
       expect(row.quantity).to.equal(2)
+      expect(row.unitPrice).to.equal(watermelon.price)
+      expect(row.productId).to.equal(watermelon.id)
+      expect(row.orderId).to.equal(order.id)
     })
   })
 })
