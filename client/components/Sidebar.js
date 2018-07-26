@@ -29,13 +29,13 @@ const categoryDummyData = [
     handleClick = (event) => {
       const categoryId = event.target.value
       this.props.selectCategory(categoryId)
-      console.log('You have selected ',categoryId)
-      console.log('this.props.selectedCategory', this.props.selectedCategory)
+      console.log('You have selected ', categoryId)
       }
 
     render() {
     if (this.props.categories) {
     const categories = this.props.categories
+    console.log('this.props.selectedCategory', this.props.selectedCategory)
 
     return (
       <div className="sidebar">
