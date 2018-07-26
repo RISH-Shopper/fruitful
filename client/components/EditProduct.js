@@ -21,7 +21,7 @@ class EditProduct extends Component {
   }
 
   handleChange (evt) {
-    console.log('props-----', this.props.products)
+    console.log('props-----', evt.target.value)
     this.setState({
       [evt.target.name]: evt.target.value
     })
@@ -36,10 +36,9 @@ class EditProduct extends Component {
   }
 
   render () {
-    console.log('PROOOOOPPPPPSSSSS', this.props)
-    const { products } = this.props
+    console.log('local state----', this.state)
     const productId = +this.props.match.params.productId
-    const selectedProduct = products.find(product => product.id === productId)
+    const selectedProduct = this.props.products.find(product => product.id === productId)
     return (
       <div>
         <h2>Edit Product</h2>
