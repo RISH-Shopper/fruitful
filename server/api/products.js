@@ -66,8 +66,7 @@ router.put('/:productId', async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.productId)
     const updatedProduct = await product.update(req.body)
-    if (product === updatedProduct) res.status(204).json(updatedProduct)
-    else res.status(202).json(updatedProduct)
+    res.status(202).json(updatedProduct)
   } catch (err) {next(err);}
 });
 

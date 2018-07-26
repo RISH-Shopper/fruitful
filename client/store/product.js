@@ -54,6 +54,7 @@ export const createProduct = (product, history) => {
 export const updateProduct = (product, productId, history) => {
   return async (dispatch) => {
     const {data} = await axios.put(`/api/products/${productId}`, product)
+    console.log('DATA-----', data)
     const action = editProduct(data)
     dispatch(action)
     history.push(`/products/${productId}`)
@@ -70,6 +71,8 @@ export default function(state = initialState, action) {
     case ADD_PRODUCT:
       return { ...state, products: [...state.products, action.product] }
     case EDIT_PRODUCT:
+      console.log('action.product', action.product)
+      console.log('state.products', state.products)
       return { ...state, products: [...state.products].map(product => {
         if (product.id === action.product.id) return action.product
         else return product
