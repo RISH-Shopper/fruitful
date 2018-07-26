@@ -3,6 +3,9 @@
 const {expect} = require('chai')
 const db = require('../index')
 const OrderProducts = db.model('order_products')
+const Order = db.model('order')
+const User = db.model('user')
+const Product = db.model('product')
 
 describe('OrderProducts model', () => {
   beforeEach(() => {
@@ -10,26 +13,42 @@ describe('OrderProducts model', () => {
   })
 
   describe('model attributes', () => {
-    let row
+    let cody, order, product, row
+
+    const watermelon = {
+      id: 1,
+      title: 'Watermelon',
+      description: 'red and green and yummy',
+      photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
+      price: 600,
+      inventory: 10
+    }
+
     beforeEach(
-      // create a product
-
-      // create an order
-
-      // create an order_products row
       async () => {
+      // create a user
+        cody = await User.create({
+          email: 'cody@puppybook.com',
+          password: 'bones'
+        })
+      // create an order
+        order = await Order.create({
+          userId: 1
+        })
+      // create a product
+          product = await Product.create(watermelon)
+      // create an order_products row
         row = await OrderProducts.create({
           orderId: 1,
           productId: 1,
-          quantity: 1,
-          unitPrice: 100
+          quantity: 2,
+          unitPrice: 600
         })
       }
-
   )
 
-    xit('has a quantity attribute', () => {
-      expect(row.quantity).to.equal(1)
+    it('has a quantity attribute', () => {
+      expect(row.quantity).to.equal(2)
     })
   })
 })
