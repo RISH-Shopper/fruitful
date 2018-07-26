@@ -64,7 +64,9 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.products
+  return {
+    products: state.products.products
+  }
 }
 
 export default connect(mapStateToProps)(Search)
