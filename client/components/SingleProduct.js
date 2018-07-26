@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import addProductToCart from '../store'
 //import thunks from store once created
 
 class SingleProduct extends React.Component {
@@ -10,11 +11,13 @@ class SingleProduct extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		//add to cart
+    this.props.addToCart(this.props.product)
 	}
 
 	render() {
-		const {product} = this.props
+    const {product, cart} = this.props
+    console.log("PROPS:", this.props)
+
 		return (
 			<div>
 				{product ?
@@ -57,10 +60,16 @@ const mapStateToProps = function(state, ownProps) {
 
 	if (products) {
 		const product = products.find(product => product.id == productId)
-		return {product}
+		return {product, cart: state.cart}
 	} else {
-		return {}
+		return {cart: state.cart}
 	}
 }
 
-export default connect(mapStateToProps)(SingleProduct)
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: product => dispatch(addProductToCart(product))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
