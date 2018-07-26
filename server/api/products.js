@@ -57,18 +57,15 @@ router.post('/', async (req, res, next) => {
     const newProduct = await Product.create(req.body)
     res.status(201)
     res.send(newProduct)
-  } catch (err){next(err);}
+  } catch (err){ next(err) }
 })
 
 
 router.put('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.productId);
-    if (!product){
-      res.send(404);
-    }
-    await product.update(req.body);
-    res.send(product);
+    const product = await Product.findById(req.params.productId)
+    const updatedProduct = await product.update(req.body)
+    res.json(updatedProduct);
   } catch (err) {next(err);}
 });
 
