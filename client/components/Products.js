@@ -72,7 +72,7 @@ class Products extends Component {
             <h1>PRODUCTS</h1>
             <h3>Currently viewing: {selectCategoryName}</h3>
 
-            <ul>
+            <ul className = "productCards">
               {products.map(product => (
                 <ProductCard product={product} key={product.id} />
               ))}
