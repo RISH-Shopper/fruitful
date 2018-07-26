@@ -47,9 +47,15 @@ class Products extends Component {
     let { products } = this.props
 
     // Filters by category if there is a selected category
-    if (this.props.categories.selectedCategory) {
+    const categories = this.props.categories.categories
+    const selectedCategory = this.props.categories.selectedCategory
+    if (selectedCategory) {
       products = this.filterByCategory(products)
     }
+
+    const selectCategoryName = (selectedCategory
+                              ? categories.find(cat => +cat.id === +selectedCategory).title
+                              : 'All Products')
 
     if (!products.length) {
       return (
@@ -64,6 +70,8 @@ class Products extends Component {
           <div>
             <Search />
             <h1>PRODUCTS</h1>
+            <h3>Currently viewing: {selectCategoryName}</h3>
+
             <ul>
               {products.map(product => (
                 <ProductCard product={product} key={product.id} />
