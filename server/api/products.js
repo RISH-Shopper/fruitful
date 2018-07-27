@@ -11,9 +11,7 @@ router.get('/', async (req, res, next) => {
       include: [{ model: Category}]
     })
     res.status(200).json(products)
-  } catch (err) {
-    next(err)
-  }
+  } catch (err) { next(err) }
 })
 
 router.get('/:productId', async (req, res, next) => {
@@ -27,9 +25,7 @@ router.get('/:productId', async (req, res, next) => {
       return next(err)
     }
     res.status(200).json(product)
-  } catch (err) {
-    next(err)
-  }
+  } catch (err) { next(err) }
 })
 
 router.get('/categories/:categoryId', async (req, res, next) => {
@@ -49,16 +45,14 @@ router.get('/categories/:categoryId', async (req, res, next) => {
   }
    const results = eagerLoading.products
     res.status(200).json(results)
-  } catch (err) {
-    next(err)
-  }
+  } catch (err) { next(err) }
 })
 
 router.post('/', async (req, res, next) => {
   try {
     const newProduct = await Product.create(req.body)
     res.status(201).json(newProduct)
-  } catch (err){ next(err) }
+  } catch (err) { next(err) }
 })
 
 
@@ -67,8 +61,18 @@ router.put('/:productId', async (req, res, next) => {
     const product = await Product.findById(req.params.productId)
     const updatedProduct = await product.update(req.body)
     res.status(202).json(updatedProduct)
-  } catch (err) {next(err);}
+  } catch (err) { next(err) }
 });
 
-
-
+router.delete('/:productId', async (req, res, next) => {
+  try {
+    const product = await Product.findById(req.params.productId)
+    if (!product) {
+      const err = new Error('Product not found!')
+      err.status = 404
+      return next(err)
+    }
+    await product.destroy()
+    res.sendStatus(204)
+  } catch (err) { next(err) }
+})

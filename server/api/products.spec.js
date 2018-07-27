@@ -32,11 +32,11 @@ const watermelon = {
 }
 
 describe('/api/products/', () => {
-describe('Product routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
 
+  describe('Product routes', () => {
 
     beforeEach(() => {
       return Product.bulkCreate([kiwi, blueberry, watermelon])
@@ -78,20 +78,20 @@ describe('Product routes', () => {
         expect(res.body).to.be.an('object')
         expect(res.body.title).to.be.equal('Kiwi')
       })
-  })
+    })
 
-  describe('PUT /api/products/:productId', () => {
+    describe('PUT /api/products/:productId', () => {
 
-    it('edits a product using PUT /api/products/:productId',
-    async () => {
-      const res = await request(app)
-      .put('/api/products/1')
-      .send({description: `I'm new here!`})
-      .expect(202)
+      it('edits a product using PUT /api/products/:productId',
+      async () => {
+        const res = await request(app)
+        .put('/api/products/1')
+        .send({description: `I'm new here!`})
+        .expect(202)
 
-      expect(res.body).to.be.an('object')
-      expect(res.body.description).to.be.equal(`I'm new here!`)
-     })
+        expect(res.body).to.be.an('object')
+        expect(res.body.description).to.be.equal(`I'm new here!`)
+      })
     })
 
     describe('DELETE /api/products/:productId', () => {
@@ -106,6 +106,7 @@ describe('Product routes', () => {
         // delete request to delete product with id of 1
         await request(app)
           .delete('/api/products/1')
+          .expect(204)
 
         // Check products after deletion
         const productsAfterDeletion = await request(app)
@@ -116,16 +117,16 @@ describe('Product routes', () => {
         const lengthAfter = productsAfterDeletion.body.length
 
         // Compare the lengths. After should be one less than before.
-        expect(lengthBefore - lengthAfter).to.equal(-1)
+        expect(lengthBefore - lengthAfter).to.equal(1)
 
         // Check to make sure that product 1 is no longer in the products array
         expect(productsAfterDeletion.body.filter(
           product => product.id === 1
         ).length).to.equal(0)
-     })
-  })
+      })
+    })
+  }) // end describe('product routes')
 }) // end describe('/api/products')
-}) // end describe('product routes')
 
 
 
