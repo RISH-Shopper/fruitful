@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {addProductToCart} from '../store'
+import { addProductToCart, removeProduct } from '../store'
 //import thunks from store once created
 
 class SingleProduct extends React.Component {
@@ -25,7 +25,8 @@ class SingleProduct extends React.Component {
 	}
 
 	render() {
-		const {product} = this.props
+		const { product, removeProduct } = this.props
+		const productId = +this.props.match.params.productId
 
 		return (
 			<div>
@@ -52,6 +53,7 @@ class SingleProduct extends React.Component {
 							<Link to={`/products/${product.id}/edit`}>
 								<button type="button">Edit Product</button>
 							</Link>
+							<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
 						</div>
 					</div>
 				) : (
@@ -76,9 +78,10 @@ const mapStateToProps = function(state, ownProps) {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		addToCart: product => dispatch(addProductToCart(product))
+		addToCart: product => dispatch(addProductToCart(product)),
+		removeProduct: productId => dispatch(removeProduct(productId, ownProps.history))
 	}
 }
 
