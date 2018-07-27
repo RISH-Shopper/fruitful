@@ -5,6 +5,10 @@ const Order = db.define('order', {
   isComplete: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  isShipped: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
