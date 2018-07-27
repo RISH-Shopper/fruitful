@@ -17,12 +17,12 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:orderId', async (req, res, next) => {
   try {
-    const id = req.params.id
+    const orderId = req.params.orderId
     const order = await OrderProducts.findAll({
       where: {
-        orderId: id
+        orderId: orderId
       },
       include: [{
         model: Order,
