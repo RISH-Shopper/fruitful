@@ -21,7 +21,15 @@ router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id
     const order = await OrderProducts.findAll({
-      where: {orderId: id}
+      where: {
+        orderId: id
+      },
+      include: [{
+        model: Order,
+        include: [{
+          model: User
+        }]
+      }]
  })
     if (!order) {
       const err = new Error('Order not found')
