@@ -12,8 +12,8 @@ class Cart extends Component {
     return (
       <div key={productItem.product.id}>
         <div>Name: {productItem.product.title}</div>
-        <div>Unit Price: {productItem.product.price}</div>
         <img src={productItem.product.photo}/>
+        <div>Unit Price: {productItem.product.price}</div>
         <div>quantity: {productItem.quantity}</div>
       </div>
 
@@ -34,10 +34,11 @@ class Cart extends Component {
     return (
       <div className="cart">
         <h1>CART</h1>
-        <h3>Number of items: {totalProductQuantity}</h3>
-        <h3>Total Price: {totalPrice}</h3>
-
         {this.renderProductItems()}
+        <h3>Total number of items: {totalProductQuantity}</h3>
+        <h3>Total cost: {totalPrice}</h3>
+
+
       </div>
     )
   }
