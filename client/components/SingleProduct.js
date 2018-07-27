@@ -1,54 +1,64 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import addProductToCart from '../store'
+import {addProductToCart} from '../store'
 //import thunks from store once created
 
 class SingleProduct extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			quantity: 0
+		}
+	}
+
 	handleChange = event => {
-		this.setState({[event.target.name]: event.target.value})
+		this.setState({quantity: event.target.value})
 	}
 
 	handleSubmit = event => {
 		event.preventDefault()
-    this.props.addToCart(this.props.product)
+		this.props.addToCart({
+			id: this.props.product.id,
+			quantity: this.state.quantity
+		})
 	}
 
 	render() {
-    const {product, cart} = this.props
-    console.log("PROPS:", this.props)
+		const {product} = this.props
 
 		return (
 			<div>
-				{product ?
-					(
+				{product ? (
+					<div>
+						<form onSubmit={this.handleSubmit}>
+							<label>{product.title}</label>
+							<img src={product.photo} />
+							<p>{product.description}</p>
+							<select
+								name="quantity"
+								onChange={this.handleChange}
+							>
+								<option value="0">--</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<button type="submit">Add to Cart</button>
+						</form>
 						<div>
-							<form onSubmit={this.handleSubmit}>
-								<label>{product.title}</label>
-								<img src={product.photo} />
-								<p>{product.description}</p>
-								<select name="quantity" onChange={this.handleChange}>
-									<option value="">--</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-								<button type="submit">Add to Cart</button>
-							</form>
-							<div>
-								<Link to={`/products/${product.id}/edit`}>
-									<button type='button'>Edit Product</button>
-								</Link>
-							</div>
+							<Link to={`/products/${product.id}/edit`}>
+								<button type="button">Edit Product</button>
+							</Link>
 						</div>
-					) : (
-						<div>
-							<p>Product does not exist!</p>
-						</div>
-					)
-				}
+					</div>
+				) : (
+					<div>
+						<p>Product does not exist!</p>
+					</div>
+				)}
 			</div>
 		)
 	}
@@ -67,9 +77,9 @@ const mapStateToProps = function(state, ownProps) {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    addToCart: product => dispatch(addProductToCart(product))
-    }
+	return {
+		addToCart: product => dispatch(addProductToCart(product))
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
