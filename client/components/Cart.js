@@ -2,34 +2,46 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
 
 class Cart extends Component {
   renderProductItems = () => {
     return this.props.productList.map(this.renderProductItem)
   }
 
-  renderProductItem = (productItem) => {
+  renderProductItem = productItem => {
     return (
       <div key={productItem.product.id}>
         <div>Name: {productItem.product.title}</div>
-        <img src={productItem.product.photo}/>
-        <div>Unit Price: {productItem.product.price}</div>
+        <img src={productItem.product.photo} />
+        <div>
+          Unit Price: {formatter.format(productItem.product.price / 100)}
+        </div>
         <div>quantity: {productItem.quantity}</div>
       </div>
-
-      );
+    )
   }
 
   render() {
     const productList = this.props.productList
 
-    const totalProductQuantity = productList.reduce(function(memo, productItem) {
-      return memo + productItem.quantity;
-    }, 0);
+    const totalProductQuantity = productList.reduce(function(
+      memo,
+      productItem
+    ) {
+      return memo + productItem.quantity
+    },
+    0)
 
-    const totalPrice = productList.reduce(function(memo, productItem) {
-      return memo + productItem.quantity * productItem.product.price;
-    }, 0);
+    const totalPrice = formatter.format(
+      productList.reduce(function(memo, productItem) {
+        return memo + productItem.quantity * productItem.product.price
+      }, 0) / 100
+    )
 
     return (
       <div className="cart">
@@ -37,19 +49,15 @@ class Cart extends Component {
         {this.renderProductItems()}
         <h3>Total number of items: {totalProductQuantity}</h3>
         <h3>Total cost: {totalPrice}</h3>
-
-
       </div>
     )
   }
 }
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const items = state.cart.items
   const products = state.products.products
-
-  const productList = [];
+  const productList = []
 
   for (var productId in items) {
     let product = products.find(product => product.id == productId)
@@ -57,10 +65,7 @@ const mapStateToProps = (state) => {
       productList.push({product, quantity: items[productId]})
     }
   }
-
-  return { productList };
+  return {productList}
 }
 
-
 export default connect(mapStateToProps)(Cart)
-
