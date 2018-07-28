@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, Category} = require('../server/db/models')
+const {User, Product, Category, Order, OrderProducts} = require('../server/db/models')
 
 /**
  * Welcome to the seed file! This seed file uses a newer language feature called...
@@ -29,6 +29,7 @@ async function seed() {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 
+  // Products
   const mango = await Product.create({
     title: 'Mango',
     description: 'insert description here',
@@ -70,21 +71,7 @@ async function seed() {
 
   })
 
-  // const asia = await Category.create({
-  //   title: 'Asia',
-  //   description: 'category description here'
-  // })
-
-  // const africa = await Category.create({
-  //   title: 'Africa',
-  //   description: 'category description here'
-  // })
-
-  // const americas = await Category.create({
-  //   title: 'Americas',
-  //   description: 'category description here'
-  // })
-
+  // Categories
   const stonefruit = await Category.create({
     title: 'Stone fruit',
     description: 'I have a pit!'
@@ -111,6 +98,91 @@ async function seed() {
     tropical.addProducts([mango, pineapple]),
     classic.addProduct(apple)
   ])
+
+  // Orders
+
+  const order1 = await Order.create({
+    userId: 1,
+    isComplete: true,
+  })
+
+  const order2 = await Order.create({
+    userId: 1,
+    isComplete: false,
+  })
+
+  const order3 = await Order.create({
+    userId: 2,
+    isComplete: true,
+  })
+
+  const order4 = await Order.create({
+    userId: 2,
+    isComplete: true,
+  })
+
+  const order5 = await Order.create({
+    userId: 2,
+    isComplete: false,
+  })
+
+  // OrderProducts entries
+  const orderProduct1 = await OrderProducts.create({
+    quantity: 5,
+    unitPrice: 400,
+    orderId: 1,
+    productId: 2
+  })
+
+  const orderProduct2 = await OrderProducts.create({
+    quantity: 3,
+    unitPrice: 300,
+    orderId: 1,
+    productId: 3
+  })
+
+  const orderProduct3 = await OrderProducts.create({
+    quantity: 14,
+    unitPrice: 100,
+    orderId: 1,
+    productId: 4
+  })
+
+  const orderProduct4 = await OrderProducts.create({
+    quantity: 3,
+    unitPrice: 300,
+    orderId: 2,
+    productId: 1
+  })
+
+  const orderProduct5 = await OrderProducts.create({
+    quantity: 6,
+    unitPrice: 400,
+    orderId: 2,
+    productId: 2
+  })
+
+  const orderProduct6 = await OrderProducts.create({
+    quantity: 5,
+    unitPrice: 400,
+    orderId: 3,
+    productId: 4
+  })
+
+  const orderProduct7 = await OrderProducts.create({
+    quantity: 5,
+    unitPrice: 700,
+    orderId: 4,
+    productId: 1
+  })
+
+  const orderProduct8 = await OrderProducts.create({
+    quantity: 5,
+    unitPrice: 100,
+    orderId: 5,
+    productId: 3
+  })
+
 
   console.log('Success! Product database is seeded!')
 }

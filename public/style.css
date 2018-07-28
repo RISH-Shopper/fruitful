@@ -20,6 +20,19 @@ form div {
   display: inline-block;
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+}
+
+th {
+  text-align: left;
+}
+
 .sidebar {
   background-color: rgb(218, 218, 218);
   color: rgb(33, 30, 49);
