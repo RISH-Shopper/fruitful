@@ -8,39 +8,70 @@ class SingleOrder extends Component {
   }
 
   render () {
-    const { orders } = this.props
+    const { singleOrder } = this.props
     const orderId = +this.props.match.params.orderId
-    const singleOrder = orders.find(order => order.id === orderId)
-    console.log('order----', orders)
 
-    // if (!singleOrder) {
-    //   return (
-    //     <div>
-    //       <h2>This order does not exist.</h2>
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div>
-    //       <h2>Order #{orderId} details</h2>
-    //       <div>
-    //         <ul>
-    //           <li>Date created: </li>
-    //           <li>Status:
+    if (!singleOrder) {
+      return <div>This order does not exist!</div>
+    }
 
-    //           </li>
-    //           <li>Customer: </li>
-    //         </ul>
-    //       </div>
-    //     </div>
-    //   )
-    // }
+    if (singleOrder && singleOrder.createdAt && singleOrder.user && singleOrder.order_products) {
+      return (
+        <div>
+          <h2>Order #{orderId} details</h2>
+          <div>
+            <ul>
+                { singleOrder.createdAt &&
+                  <li>Date created: {singleOrder.createdAt.slice(0,10)}</li>
+                }
+                {singleOrder.isShipped ?
+                  (
+                    <li>Status: Shipped</li>
+                  ) : (
+                    <li>Status: Processing</li>
+                  )
+
+                }
+              <li>Customer: {singleOrder.user.email}</li>
+            </ul>
+          </div>
+          <div>
+            <h2>Purchased products:</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Product No.</th>
+                  <th>Product Name</th>
+                  <th>Product Image</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                </tr>
+                {
+                  singleOrder.order_products.map(product => (
+                    <tr key={product.productId}>
+                      <td>{product.productId}</td>
+                      <td>{product.product.title}</td>
+                      <td>
+                        <img className='product-img' src={product.product.photo} alt='image' />
+                      </td>
+                      <td>{product.quantity}</td>
+                      <td>{product.unitPrice}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )
+    } else {
+      return <div>Loading order...</div>
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    orders: state.order.orders,
     singleOrder: state.order.singleOrder,
     products: state.products.products
   }
