@@ -10,7 +10,6 @@ class AllOrders extends Component {
 
   render () {
     const { orders } = this.props
-    console.log('orders------', orders)
 
     if (!orders) {
       return (
