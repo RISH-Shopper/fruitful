@@ -19,18 +19,25 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:orderId', async (req, res, next) => {
   try {
-    const orderId = req.params.orderId
-    const order = await OrderProducts.findAll({
-      where: {
-        orderId: orderId
-      },
+    const order = await Order.findById(req.params.orderId, {
       include: [{
-        model: Order,
-        include: [{
-          model: User
-        }]
+        model: OrderProducts,
+        where: {
+          orderId: req.params.orderId
+        }
       }]
- })
+    })
+    // const order = await OrderProducts.findAll({
+    //   where: {
+    //     orderId: orderId
+    //   },
+    //   include: [{
+    //     model: Order,
+    //     include: [{
+    //       model: User
+    //     }]
+    //   }]
+    // })
     if (!order) {
       const err = new Error('Order not found')
       err.status = 404
