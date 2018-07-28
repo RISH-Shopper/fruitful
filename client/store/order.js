@@ -3,8 +3,8 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-const GET_ORDERS = 'GET_ORDERS'
-const GET_ORDER = 'GET_ORDER'
+export const GET_ORDERS = 'GET_ORDERS'
+export const GET_ORDER = 'GET_ORDER'
 
 /**
  * INITIAL STATE
@@ -12,12 +12,13 @@ const GET_ORDER = 'GET_ORDER'
 
 const initialState = {
   orders: [],
-  singleOrder: {}
+  singleOrder: []
 }
 
 /**
  * ACTION CREATORS
  */
+
 export const getOrders = (orders) => ({
   type: GET_ORDERS,
   orders
@@ -28,10 +29,11 @@ export const getOrder = (order) => ({
   order
 })
 
+
 /**
  * THUNK CREATORS
  */
-export const fetchOrders = () => {
+ export const fetchOrders = () => {
   return async (dispatch) => {
     try {
       const {data} = await axios.get('/api/orders')
