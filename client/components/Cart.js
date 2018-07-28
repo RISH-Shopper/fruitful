@@ -2,34 +2,42 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const cartDummyData = {
-	cartItems: [
-    {
-      productId: 1,
-      quantity: 3,
-      unitPrice: 100
-    },
-    {
-      productId: 2,
-      quantity: 1,
-      unitPrice: 200
-    },
-  ],
-	totalCartPrice: 500,
-	totalCartQuantity: 4
-}
 
 class Cart extends Component {
+  renderProductItems = () => {
+    return this.props.productList.map(this.renderProductItem)
+  }
+
+  renderProductItem = (productItem) => {
+    return (
+      <div key={productItem.product.id}>
+        <div>Name: {productItem.product.title}</div>
+        <img src={productItem.product.photo}/>
+        <div>Unit Price: {productItem.product.price}</div>
+        <div>quantity: {productItem.quantity}</div>
+      </div>
+
+      );
+  }
 
   render() {
-    const cart = this.props.cart ? this.props.cart : cartDummyData
-    console.log('Cart: ', cart)
+    const productList = this.props.productList
+
+    const totalProductQuantity = productList.reduce(function(memo, productItem) {
+      return memo + productItem.quantity;
+    }, 0);
+
+    const totalPrice = productList.reduce(function(memo, productItem) {
+      return memo + productItem.quantity * productItem.product.price;
+    }, 0);
 
     return (
       <div className="cart">
         <h1>CART</h1>
-        <h3>Number of items: {cart.totalCartQuantity}</h3>
-        <h3>Total Price: {cart.totalCartPrice}</h3>
+        {this.renderProductItems()}
+        <h3>Total number of items: {totalProductQuantity}</h3>
+        <h3>Total cost: {totalPrice}</h3>
+
 
       </div>
     )
@@ -38,9 +46,19 @@ class Cart extends Component {
 
 
 const mapStateToProps = (state) => {
-	return {
-    cart: state.cart,
+  const items = state.cart.items
+  const products = state.products.products
+
+  const productList = [];
+
+  for (var productId in items) {
+    let product = products.find(product => product.id == productId)
+    if (product) {
+      productList.push({product, quantity: items[productId]})
+    }
   }
+
+  return { productList };
 }
 
 
