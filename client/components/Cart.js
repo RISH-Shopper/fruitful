@@ -24,8 +24,7 @@ class Cart extends Component {
     // this.setState({ totalPrice: this.totalPrice })
 
     this.props.createNewOrder({userId: this.props.user.id, totalPrice: this.state.totalPrice})
-    console.log("ORDER", this.props)
-    console.log("THISSTATE", this.state)
+
     this.props.history.push('/checkout')
   }
 
@@ -63,7 +62,6 @@ class Cart extends Component {
       }, 0) / 100
     )
 
-console.log("CART PROPS", this.props)
     return (
       <div className="cart">
         <h1>CART</h1>

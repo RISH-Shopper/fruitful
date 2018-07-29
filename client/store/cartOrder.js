@@ -17,8 +17,7 @@ export const createOrder = (order) => {
       //order is an object with userId and totalCost
       const response = await axios.post('/api/cart', order)
       const newOrder = response.data
-      console.log("NEWORDER", newOrder)
-      console.log("DISPATCH", dispatch(addOrder(newOrder)))
+      dispatch(addOrder(newOrder))
     } catch (err) {
       console.log(err)
     }
