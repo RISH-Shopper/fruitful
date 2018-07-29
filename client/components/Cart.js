@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 
 export const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -9,6 +8,18 @@ export const formatter = new Intl.NumberFormat('en-US', {
 })
 
 class Cart extends Component {
+  constructor(){
+    super()
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+
+  handleSubmit(evt) {
+    evt.preventDefault()
+    this.props.history.push('/checkout')
+  }
+
   renderProductItems = () => {
     return this.props.productList.map(this.renderProductItem)
   }
@@ -49,6 +60,9 @@ class Cart extends Component {
         {this.renderProductItems()}
         <h3>Total number of items: {totalProductQuantity}</h3>
         <h3>Total cost: {totalPrice}</h3>
+        <button onClick={this.handleSubmit}>Checkout</button>
+
+
       </div>
     )
   }
