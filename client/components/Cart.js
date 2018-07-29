@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {createOrder} from '../store/cartOrder'
 
 export const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -10,13 +11,21 @@ export const formatter = new Intl.NumberFormat('en-US', {
 class Cart extends Component {
   constructor(){
     super()
-
+    this.state = {
+      totalPrice: 600
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
   handleSubmit(evt) {
     evt.preventDefault()
+    //need to set state with totalPrice
+    // this.setState({ totalPrice: this.totalPrice })
+
+    this.props.createNewOrder({userId: this.props.user.id, totalPrice: this.state.totalPrice})
+    console.log("ORDER", this.props)
+    console.log("THISSTATE", this.state)
     this.props.history.push('/checkout')
   }
 
@@ -54,12 +63,17 @@ class Cart extends Component {
       }, 0) / 100
     )
 
+console.log("CART PROPS", this.props)
     return (
       <div className="cart">
         <h1>CART</h1>
         {this.renderProductItems()}
         <h3 className='total-number-items'>Total number of items: {totalProductQuantity}</h3>
         <h3 className='total-cost'>Total cost: {totalPrice}</h3>
+
+
+
+
         <button onClick={this.handleSubmit}>Checkout</button>
       </div>
     )
@@ -70,6 +84,8 @@ const mapStateToProps = state => {
   const items = state.cart.items
   const products = state.products.products
   const productList = []
+  const order = state.cartOrder
+  const user = state.user
 
   for (var productId in items) {
     let product = products.find(product => product.id == productId)
@@ -78,7 +94,13 @@ const mapStateToProps = state => {
     }
   }
 
-  return {productList}
+  return {productList, order, user}
 }
 
-export default connect(mapStateToProps)(Cart)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createNewOrder: (userIdandPrice) => dispatch(createOrder(userIdandPrice))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

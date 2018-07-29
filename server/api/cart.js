@@ -10,6 +10,7 @@ module.exports = router
 
 router.post('/', async (req, res, next) => {
   try {
+    //req.body just takes userId (of logged-in user and totalPrice of cart on checkout)
     const newOrder = await Order.create(req.body)
     res.status(201).json(newOrder)
   } catch (err) { next(err) }

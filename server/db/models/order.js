@@ -11,8 +11,7 @@ const Order = db.define('order', {
     defaultValue: false
   },
   totalPrice: {
-    type: Sequelize.INTEGER,
-    allowNull: false
+    type: Sequelize.INTEGER
   }
 })
 
