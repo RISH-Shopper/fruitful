@@ -9,6 +9,10 @@ const Order = db.define('order', {
   isShipped: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  totalPrice: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 })
 
