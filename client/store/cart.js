@@ -39,6 +39,7 @@ export const decrementProductQuantity = productId => ({
 	productId
 })
 
+
 export default function(state = initialState, action) {
 	let newItems, id, quantity
 	switch (action.type) {
