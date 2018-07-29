@@ -1,29 +1,23 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {createOrder} from '../store/cartOrder'
+import {cartTotalPrice, formatter} from '../store/helper'
 
-export const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2
-})
+
+
 
 class Cart extends Component {
   constructor(){
     super()
-    this.state = {
-      totalPrice: 600
-    }
+
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
   handleSubmit(evt) {
     evt.preventDefault()
-    //need to set state with totalPrice
-    // this.setState({ totalPrice: this.totalPrice })
 
-    this.props.createNewOrder({userId: this.props.user.id, totalPrice: this.state.totalPrice})
+    this.props.createNewOrder({userId: this.props.user.id, totalPrice: this.props.totalPrice})
 
     this.props.history.push('/checkout')
   }
@@ -84,6 +78,7 @@ const mapStateToProps = state => {
   const productList = []
   const order = state.cartOrder
   const user = state.user
+  const totalPrice = (cartTotalPrice(state)*100)
 
   for (var productId in items) {
     let product = products.find(product => product.id == productId)
@@ -92,7 +87,7 @@ const mapStateToProps = state => {
     }
   }
 
-  return {productList, order, user}
+  return {productList, order, user, totalPrice}
 }
 
 const mapDispatchToProps = (dispatch) => {
