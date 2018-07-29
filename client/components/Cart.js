@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {formatter} from '../store/helper'
 import {createOrder} from '../store/cartOrder'
 
-
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
 
 class Cart extends Component {
-
   constructor(){
     super()
     this.state = {
@@ -17,7 +19,6 @@ class Cart extends Component {
 
 
   handleSubmit(evt) {
-
     evt.preventDefault()
     //need to set state with totalPrice
     // this.setState({ totalPrice: this.totalPrice })
@@ -37,7 +38,7 @@ class Cart extends Component {
         <div>Name: {productItem.product.title}</div>
         <img src={productItem.product.photo} />
         <div>
-          Unit Price: {formatter.format(productItem.product.price/100)}
+          Unit Price: {formatter.format(productItem.product.price / 100)}
         </div>
         <div>quantity: {productItem.quantity}</div>
       </div>
