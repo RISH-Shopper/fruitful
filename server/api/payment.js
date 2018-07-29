@@ -8,10 +8,16 @@ module.exports = router
 
 router.post("/stripe", async (req, res) => {
   try {
-    //find most recent order that is not complete
-    let order = await Order.findById(1)
+    //need to store final price in database/backend to grab the amount to send via Stripe:
+    //find most recent order by the logged in user that is not completed and grab that totalPrice
+    let order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        isComplete: false
+      }
+    })
     let orderAmount = order.totalPrice
-    //need to store final price in database/backend to grab the amount to send to Stripe to charge
+
     let {status} = await stripe.charges.create({
       amount: orderAmount,
       currency: "usd",
