@@ -26,7 +26,7 @@ class Cart extends Component {
 
   renderProductItem = productItem => {
     return (
-      <div key={productItem.product.id}>
+      <div key={productItem.product.id} className='product-item'>
         <div>Name: {productItem.product.title}</div>
         <img src={productItem.product.photo} />
         <div>
@@ -58,11 +58,9 @@ class Cart extends Component {
       <div className="cart">
         <h1>CART</h1>
         {this.renderProductItems()}
-        <h3>Total number of items: {totalProductQuantity}</h3>
-        <h3>Total cost: {totalPrice}</h3>
+        <h3 className='total-number-items'>Total number of items: {totalProductQuantity}</h3>
+        <h3 className='total-cost'>Total cost: {totalPrice}</h3>
         <button onClick={this.handleSubmit}>Checkout</button>
-
-
       </div>
     )
   }
@@ -79,6 +77,7 @@ const mapStateToProps = state => {
       productList.push({product, quantity: items[productId]})
     }
   }
+
   return {productList}
 }
 
