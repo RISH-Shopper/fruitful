@@ -104,26 +104,31 @@ async function seed() {
   const order1 = await Order.create({
     userId: 1,
     isComplete: true,
+    totalPrice: 100
   })
 
   const order2 = await Order.create({
     userId: 1,
     isComplete: false,
+    totalPrice: 200
   })
 
   const order3 = await Order.create({
     userId: 2,
     isComplete: true,
+    totalPrice: 300
   })
 
   const order4 = await Order.create({
     userId: 2,
     isComplete: true,
+    totalPrice: 400
   })
 
   const order5 = await Order.create({
     userId: 2,
     isComplete: false,
+    totalPrice: 500
   })
 
   // OrderProducts entries
