@@ -1,21 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {formatter} from '../store/helper'
 
-export const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2
-})
 
 class Cart extends Component {
-  constructor(){
-    super()
-
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-
-  handleSubmit(evt) {
+  handleSubmit = evt => {
     evt.preventDefault()
     this.props.history.push('/checkout')
   }
@@ -30,7 +19,7 @@ class Cart extends Component {
         <div>Name: {productItem.product.title}</div>
         <img src={productItem.product.photo} />
         <div>
-          Unit Price: {formatter.format(productItem.product.price / 100)}
+          Unit Price: {formatter.format(productItem.product.price/100)}
         </div>
         <div>quantity: {productItem.quantity}</div>
       </div>
