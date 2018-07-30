@@ -10,7 +10,10 @@ export const addOrder = order => ({
 	receiveOrder: order
 })
 
-//thunk
+
+
+
+//thunks
 export const createOrder = (order) => {
   return async (dispatch) => {
     try {
@@ -24,6 +27,17 @@ export const createOrder = (order) => {
   }
 }
 
+export const updateOrder = (order) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`/api/orders/${order.id}`, order)
+      const updatedOrder = response.data
+      dispatch(addOrder(updatedOrder))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
 
 export default function(state = initialState, action) {
   switch (action.type) {
