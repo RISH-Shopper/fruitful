@@ -1,21 +1,25 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { fetchOrder } from '../store'
+import { fetchOrders } from '../store'
 
 class SingleOrder extends Component {
   componentDidMount () {
-    this.props.fetchOrder(this.props.match.params.orderId)
+    this.props.fetchOrders()
   }
 
   render () {
-    const { singleOrder } = this.props
+    const { orders } = this.props
     const orderId = +this.props.match.params.orderId
+    const singleOrder = orders.find(order => order.id === orderId)
+    console.log('all orders----', orders)
+    console.log('order ID----', orderId)
+    console.log('current order----', singleOrder)
 
     if (!singleOrder) {
       return <div>This order does not exist!</div>
     }
 
-    if (singleOrder && singleOrder.createdAt && singleOrder.user && singleOrder.order_products) {
+    if (orders && singleOrder && singleOrder.user && singleOrder.order_products) {
       return (
         <div>
           <h2>Order #{orderId} details</h2>
@@ -72,14 +76,13 @@ class SingleOrder extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    singleOrder: state.order.singleOrder,
-    products: state.products.products
+    orders: state.order.orders
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOrder: (orderId) => dispatch(fetchOrder(orderId))
+    fetchOrders: () => dispatch(fetchOrders())
   }
 }
 

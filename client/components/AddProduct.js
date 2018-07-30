@@ -31,6 +31,7 @@ class AddProduct extends Component {
   }
 
   render () {
+    console.log('am i here?????')
     return (
       <div>
         <h2>New Product Form</h2>
