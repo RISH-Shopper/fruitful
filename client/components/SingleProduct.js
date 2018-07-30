@@ -50,6 +50,11 @@ class SingleProduct extends React.Component {
 							</select>
 							<button type="submit">Add to Cart</button>
 						</form>
+						<div>
+              {
+                (this.props.toast.text) ? <AddtoCartToast /> : null
+              }
+						</div>
 						{user.admin && (
 							<div>
 								<Link to={`/products/${product.id}/edit`}>
@@ -58,16 +63,6 @@ class SingleProduct extends React.Component {
 								<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
 							</div>
 						)}
-						<div>
-              {
-                (this.props.toast.text) ? <AddtoCartToast /> : null
-              }
-
-							<Link to={`/products/${product.id}/edit`}>
-								<button type="button">Edit Product</button>
-							</Link>
-							<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
-						</div>
 					</div>
 				) : (
 					<div>
