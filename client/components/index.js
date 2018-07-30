@@ -19,4 +19,4 @@ export { default as Analytics } from './Analytics'
 export { default as ChartOrders } from './ChartOrders'
 export { default as ChartProducts } from './ChartProducts'
 export { default as ChartUsers } from './ChartUsers'
-
+export { default as OrderHistory } from './OrderHistory'
