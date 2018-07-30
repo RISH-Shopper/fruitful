@@ -6,10 +6,11 @@ const ProductCard = (props) => {
 
   return (
     <div id='product' key= {product.id} className='column'>
-    <div className="h-100 card text-white bg-secondary mb-3" style={{width: '22rem'}}>
-      <Link to={`/products/${product.id}`}>{product.title} </Link>
+    <div className="h-100 card text-primary bg-light mb-3" style={{width: '22rem'}}>
+      <h5 class="card-title primary">{product.title}</h5>
+      <Link to={`/products/${product.id}`}>see more </Link>
       <div>
-        <img className='product-img' src={product.photo} alt='image' />
+        <img className="card-img-top" src={product.photo} alt='Card image cap' />
        </div>
       </div>
     </div>
@@ -21,17 +22,3 @@ const ProductCard = (props) => {
 
 
 export default ProductCard
-
-
-
-
-       //          <img className="card-img-top" src={student.imageURL} height={400} alt="Card image cap" />
-       //            <div className="card-body">
-       //              <h5 className="card-title">{student.firstName} {student.lastName}</h5>
-       //              <Link to={`/students/${student.id}`}>
-       //                <button type="button" className="btn btn-dark">See student profile</button>
-       //              </Link>
-       //            </div>
-       //        </div>
-       //    </div>
-       //
