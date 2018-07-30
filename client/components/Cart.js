@@ -17,7 +17,10 @@ class Cart extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
 
-    this.props.createNewOrder({userId: this.props.user.id, totalPrice: this.props.totalPrice})
+    this.props.createNewOrder({
+      userId: this.props.user.id || '99',
+      totalPrice: this.props.totalPrice
+    })
 
     this.props.history.push('/checkout')
   }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
-import Axios from 'axios';
+import axios from 'axios';
 
 class CheckoutForm extends Component {
   constructor() {
@@ -28,24 +28,36 @@ class CheckoutForm extends Component {
     })
   }
 
-  async componentDidMount(){
-    let me = await Axios.get('/auth/me');
-    this.setState({
-        email: me.data.email,
-        userId: me.data.id
-      })
-  }
+  // async componentDidMount(){
+  //   console.log('PROPS--------', this.props)
+  //   let me = await axios.get('/auth/me');
+  //   console.log('meeeeeee', me)
+
+  //   if (me) {
+  //     this.setState({
+  //       email: me.data.email,
+  //       userId: me.data.id
+  //     })
+  //   } else {
+  //     this.setState({
+  //       email: '',
+  //       userId: 0
+  //     })
+  //   }
+  // }
 
   async submit(evt) {
     evt.preventDefault()
-    const { userId, email, fullName, address1, address2, city, state, zipcode, country, phoneNumber } = this.state
+    const { fullName } = this.state
     let {token} = await this.props.stripe.createToken({
       name: fullName
     })
-    // let me = await Axios.get('/auth/me');
-    // let meId = me.data.id;
-    let postBody = { token: {...token}, userId : userId};
-    let response = await Axios.post('/api/payment/stripe', postBody)
+
+    let postBody = {
+      token: {...token},
+      userId: this.props.user.id
+    }
+    let response = await axios.post('/api/payment/stripe', postBody)
 
     if (response.status === 200) {
       this.setState({complete: true})
