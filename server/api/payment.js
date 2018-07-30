@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const stripe = require("stripe")("sk_test_a5axcUZ4lh8ObzYWMSXsZICh")
+const stripe = require("stripe")(process.env.STRIPE_KEY)
 router.use(require("body-parser").text())
 const {Order} = require('../db/models')
 
