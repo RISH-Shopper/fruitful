@@ -14,27 +14,31 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn, isAdmin } = this.props
 
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route exact path="/analytics" component={Analytics} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/orders" component={AllOrders} />
-        <Route exact path="/orders/:orderId" component={SingleOrder} />
         <Route exact path="/products" component={Products} />
-        <Route exact path="/products/add" component={AddProduct} />
         <Route exact path="/products/:productId" component={SingleProduct} />
-        <Route exact path="/products/:productId/edit" component={EditProduct} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/home/orders" component={OrderHistory} />
+            <Route exact path="/orders/:orderId" component={SingleOrder} />
+            {isAdmin && (
+              <Switch>
+                <Route exact path="/orders" component={AllOrders} />
+                <Route exact path="/analytics" component={Analytics} />
+                <Route exact path="/products/:productId/edit" component={EditProduct} />
+                <Route exact path="/addProduct" component={AddProduct} />
+              </Switch>
+            )}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -51,7 +55,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.admin
   }
 }
 

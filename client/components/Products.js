@@ -6,29 +6,6 @@ import Search from './Search'
 import Sidebar from './Sidebar'
 import { getProducts } from '../store/product'
 
-// const productDummyData = [
-
-//   {id: 1,
-//   title: 'DummyKiwi',
-//   photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
-//   price: 500,
-//   inventory: 10
-//   },
-
-//   {id: 2,
-//     title: 'DummyBlueberry',
-//     photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
-//     price: 600,
-//     inventory: 10
-//     },
-
-//     {id: 3,
-//       title: 'DummyWatermelon',
-//       photo: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71949-200.png',
-//       price: 600,
-//       inventory: 10
-//       },
-// ]
 
 class Products extends Component {
   componentDidMount () {
@@ -72,7 +49,7 @@ class Products extends Component {
             <h1>PRODUCTS</h1>
             <h3>Currently viewing: {selectCategoryName}</h3>
 
-            <ul className = "productCards">
+            <ul className = "card-group">
               {products.map(product => (
                 <ProductCard product={product} key={product.id} />
               ))}

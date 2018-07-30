@@ -1,10 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+<<<<<<< HEAD
 import { addProductToCart, removeProduct} from '../store'
 import Axios from 'axios';
 
 //import thunks from store once created
+=======
+import { addProductToCart, removeProduct, addToast } from '../store'
+import AddtoCartToast from './AddtoCartToast'
+>>>>>>> master
 
 class SingleProduct extends React.Component {
 	constructor(props) {
@@ -24,6 +29,7 @@ class SingleProduct extends React.Component {
 			id: this.props.product.id,
 			quantity: this.state.quantity
     })
+<<<<<<< HEAD
 
   }
 
@@ -34,9 +40,13 @@ class SingleProduct extends React.Component {
     // save updated cart state to session
     await Axios.post('/api/session/', {cart: {items: this.props.cart.items}})
   }
+=======
+    this.props.addToast({text: `You've added ${this.state.quantity} ${this.props.product.title} to your cart`})
+	}
+>>>>>>> master
 
 	render() {
-		const { product, removeProduct } = this.props
+		const { user, product, removeProduct } = this.props
 		const productId = +this.props.match.params.productId
 
 		return (
@@ -61,11 +71,18 @@ class SingleProduct extends React.Component {
 							<button type="submit">Add to Cart</button>
 						</form>
 						<div>
-							<Link to={`/products/${product.id}/edit`}>
-								<button type="button">Edit Product</button>
-							</Link>
-							<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+              {
+                (this.props.toast.text) ? <AddtoCartToast /> : null
+              }
 						</div>
+						{user.admin && (
+							<div>
+								<Link to={`/products/${product.id}/edit`}>
+									<button type="button">Edit Product</button>
+								</Link>
+								<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+							</div>
+						)}
 					</div>
 				) : (
 					<div>
@@ -79,13 +96,19 @@ class SingleProduct extends React.Component {
 
 const mapStateToProps = function(state, ownProps) {
 	const productId = ownProps.match.params.productId
-	const products = state.products.products
+  const products = state.products.products
+  const toast = state.toasts.cartToast
 
 	if (products) {
 		const product = products.find(product => product.id == productId)
-		return {product, cart: state.cart}
+		return {
+			product,
+			user: state.user,
+			cart: state.cart,
+			toast
+		}
 	} else {
-		return {cart: state.cart}
+		return {cart: state.cart, toast}
 	}
 }
 
@@ -93,6 +116,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		addToCart: product => dispatch(addProductToCart(product)),
     removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
+<<<<<<< HEAD
+=======
+    addToast: toast => (dispatch(addToast(toast)))
+>>>>>>> master
 	}
 }
 
