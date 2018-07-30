@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { addProductToCart, removeProduct, addToast } from '../store'
 import AddtoCartToast from './AddtoCartToast'
-//import thunks from store once created
 
 class SingleProduct extends React.Component {
 	constructor(props) {
@@ -27,7 +26,7 @@ class SingleProduct extends React.Component {
 	}
 
 	render() {
-		const { product, removeProduct } = this.props
+		const { user, product, removeProduct } = this.props
 		const productId = +this.props.match.params.productId
 
 		return (
@@ -51,6 +50,14 @@ class SingleProduct extends React.Component {
 							</select>
 							<button type="submit">Add to Cart</button>
 						</form>
+						{user.admin && (
+							<div>
+								<Link to={`/products/${product.id}/edit`}>
+									<button type="button">Edit Product</button>
+								</Link>
+								<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+							</div>
+						)}
 						<div>
               {
                 (this.props.toast.text) ? <AddtoCartToast /> : null
@@ -79,7 +86,12 @@ const mapStateToProps = function(state, ownProps) {
 
 	if (products) {
 		const product = products.find(product => product.id == productId)
-		return {product, cart: state.cart, toast}
+		return {
+			product,
+			user: state.user,
+			cart: state.cart,
+			toast
+		}
 	} else {
 		return {cart: state.cart, toast}
 	}
