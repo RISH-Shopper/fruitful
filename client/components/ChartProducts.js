@@ -16,6 +16,8 @@ class ChartProducts extends Component {
       <div className="chartProducts">
         <h3>PRODUCTS</h3>
 
+        <div>Orders by Product</div>
+        <div>[chart]</div>
 
       </div>
     )

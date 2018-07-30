@@ -8,6 +8,9 @@ import { getProducts } from '../store/product'
 
 class ChartUsers extends Component {
 
+  calculateOrdersByUsers = () => {
+    const orders = this.props.orders
+  }
 
   render() {
 
@@ -15,6 +18,8 @@ class ChartUsers extends Component {
       <div className="chartUsers">
         <h3>USERS</h3>
 
+        <div>Orders by User</div>
+        <div>[chart]</div>
 
       </div>
     )
@@ -23,6 +28,7 @@ class ChartUsers extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+    users: state.users,
     orders: state.order.orders,
   }
 }
