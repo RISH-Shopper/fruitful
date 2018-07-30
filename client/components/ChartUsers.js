@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { getProducts } from '../store/product'
+import { fetchOrdersByUser } from '../store'
+import BarChart from './BarChart'
 
 
 
@@ -8,19 +9,20 @@ import { getProducts } from '../store/product'
 
 class ChartUsers extends Component {
 
-  calculateOrdersByUsers = () => {
-    const orders = this.props.orders
+  componentDidMount () {
+    this.props.fetchOrdersByUser()
   }
 
   render() {
-
+    const data = this.props.ordersByUser
     return (
       <div className="chartUsers">
         <h3>USERS</h3>
 
-        <div>Orders by User</div>
-        <div>[chart]</div>
-
+        <strong>Orders by User</strong>
+        <svg width="100%" height="500">
+          <BarChart data={data} independent="email" dependent="orders" />
+        </svg>
       </div>
     )
   }
@@ -30,12 +32,13 @@ const mapStateToProps = (state) => {
 	return {
     users: state.users,
     orders: state.order.orders,
+    ordersByUser: state.analytics.ordersByUser
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProducts: () => dispatch(getProducts())
+    fetchOrdersByUser: () => dispatch(fetchOrdersByUser())
   }
 }
 

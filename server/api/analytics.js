@@ -5,8 +5,8 @@ module.exports = router
 
 router.get('/ordersByUser', async (req, res, next) => {
   try {
-    await db.query('SELECT "userId", count(*) FROM ORDERS GROUP BY "userId"').spread((results, metadata) => {
-      console.log(results)
+    await db.query(
+      'SELECT "userId", "email", count(*) AS orders FROM orders INNER JOIN users ON orders."userId" = users.id GROUP BY "userId", "email" ').spread((results, metadata) => {
       res.status(200).json(results)
     })
   } catch (err) {

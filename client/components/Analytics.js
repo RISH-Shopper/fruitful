@@ -13,7 +13,7 @@ class Analytics extends Component {
   constructor(){
     super()
     this.state = {
-      currentChart: ChartOrders,
+      currentChart: ChartUsers,
       charts: {
         ChartOrders: ChartOrders,
         ChartProducts: ChartProducts,
@@ -41,9 +41,9 @@ class Analytics extends Component {
         <h1>ANALYTICS</h1>
 
         <div className="analyticsButtons">
+          <button type="button" value="ChartUsers" onClick={this.handleClick}>Users</button>
           <button type="button" value="ChartOrders" onClick={this.handleClick}>Orders</button>
           <button type="button" value="ChartProducts" onClick={this.handleClick}>Products</button>
-          <button type="button" value="ChartUsers" onClick={this.handleClick}>Users</button>
         </div>
 
         <div>
