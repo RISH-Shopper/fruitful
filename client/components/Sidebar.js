@@ -36,8 +36,8 @@ const categoryDummyData = [
     const categories = this.props.categories
 
     return (
-      <div className="sidebar">
-        <h2>CATEGORIES</h2>
+      <div className="nav flex-column">
+        <h4>CATEGORIES</h4>
         <ul>
           {categories.map(category => {
             return (<div key={category.id}><button type="button" value={category.id} onClick={this.handleClick}>{category.title}</button></div>)
