@@ -50,10 +50,9 @@ class Search extends React.Component {
     return (
       <div>
         {this.renderRedirect()}
-        <form onSubmit={this.handleSubmit}>
-          <label> Search for a product: </label>
-          <input type="text" name="productTitle" onChange={this.handleChange} />
-          <button type="submit">Submit</button>
+        <form onSubmit={this.handleSubmit} className="form-inline my-2 my-lg-0">
+          <input type="search" name="productTitle" onChange={this.handleChange} className= "form-control mr-sm-2 " placeholder="Search for product" aria-label="Search"/>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
         </form>
         {this.state.noProductToDisplay ? (
           <h4>No Product Found By That Name</h4>

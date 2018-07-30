@@ -34,15 +34,37 @@ class AddProduct extends Component {
     return (
       <div>
         <h2>New Product Form</h2>
-        <Form
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          title={this.state.title}
-          description={this.state.description}
-          price={this.state.price}
-          inventory={this.state.inventory}
-          photo={this.state.photo}
-        />
+
+
+         <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="title" />
+            <input type="text" name="title"  onChange={this.handleChange} value={this.state.title}
+            className="form-control col-lg-20s" id="nameInput" aria-describedby="firstName" placeholder="Enter name of fruit" />
+            <small id="title" className="form-text text-muted" />
+
+            <label htmlFor="description" />
+            <input type="text" name="description"  onChange={this.handleChange} value={this.state.description}
+            className="form-control" id="description" aria-describedby="lastName" placeholder="describe your fruit" />
+            <small id="description" className="form-text text-muted" />
+
+            <label htmlFor="price" />
+            <input type="price" name="price"  onChange={this.handleChange} value={this.state.price}
+            className="form-control" id="emailInput" aria-describedby="price" placeholder="Cost of fruit (ex: 2)" />
+            <small id="price" className="form-text text-muted" />
+
+            <label htmlFor="inventory" />
+            <input type="text" name="inventory"  onChange={this.handleChange} value={this.state.inventory}
+            className="form-control" id="inventory" aria-describedby="inventory" placeholder="Number of products" />
+            <small id="inventory" className="form-text text-muted" />
+
+            <label htmlFor="photo" />
+            <input type="text" name="photo"  onChange={this.handleChange} value={this.state.photo}
+            className="form-control" id="photo" aria-describedby="gpa" placeholder="Enter url link to photo" />
+            <small id="photo" className="form-text text-muted" />
+
+        </div>
+        </form>
       </div>
     )
   }
