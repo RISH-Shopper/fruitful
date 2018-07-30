@@ -40,7 +40,11 @@ class CheckoutForm extends Component {
       body: token.id
     })
 
-    if (response.ok) this.setState({complete: true})
+    if (response.ok) {
+      this.setState({complete: true})
+      this.props.order.order.isComplete = true
+      this.props.completeOrder(this.props.order.order)
+    }
   }
 
   render() {
