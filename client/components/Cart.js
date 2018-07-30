@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {createOrder} from '../store/cartOrder'
 import {cartTotalPrice, formatter} from '../store/helper'
+import { getCartFromSession } from '../store';
 
 
 
@@ -13,6 +14,9 @@ class Cart extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount(){
+    this.props.setCartFromSession()
+  }
 
   handleSubmit(evt) {
     evt.preventDefault()
@@ -43,8 +47,8 @@ class Cart extends Component {
   }
 
   render() {
-    const productList = this.props.productList
 
+    const productList = this.props.productList
     const totalProductQuantity = productList.reduce(function(
       memo,
       productItem
@@ -95,7 +99,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createNewOrder: (userIdandPrice) => dispatch(createOrder(userIdandPrice))
+    createNewOrder: (userIdandPrice) => dispatch(createOrder(userIdandPrice)),
+    setCartFromSession: (cart) => dispatch(getCartFromSession(cart))
   }
 }
 

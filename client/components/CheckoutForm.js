@@ -59,10 +59,14 @@ class CheckoutForm extends Component {
     }
     let response = await axios.post('/api/payment/stripe', postBody)
 
+
     if (response.status === 200) {
       this.setState({complete: true})
       this.props.order.order.isComplete = true
       this.props.completeOrder(this.props.order.order)
+      // clear cart saved on session
+      await Axios.post('/api/session/', {cart: {}})
+
     }
   }
 
