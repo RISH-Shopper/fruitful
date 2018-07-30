@@ -1,21 +1,21 @@
 import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
+import Axios from 'axios';
 
 class CheckoutForm extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      purchaseInfo: {
-        email: '',
-        fullName: '',
-        address1: '',
-        address2: '',
-        city: '',
-        state: '',
-        zipcode: '',
-        country: '',
-        phoneNumber: ''
-      },
+      userId: '',
+      email: '',
+      fullName: '',
+      address1: '',
+      address2: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      country: '',
+      phoneNumber: '',
       complete: false
     }
     this.handleChange = this.handleChange.bind(this)
@@ -28,19 +28,26 @@ class CheckoutForm extends Component {
     })
   }
 
+  async componentDidMount(){
+    let me = await Axios.get('/auth/me');
+    this.setState({
+        email: me.data.email,
+        userId: me.data.id
+      })
+  }
+
   async submit(evt) {
     evt.preventDefault()
-    const { email, fullName, address1, address2, city, state, zipcode, country, phoneNumber } = this.state
+    const { userId, email, fullName, address1, address2, city, state, zipcode, country, phoneNumber } = this.state
     let {token} = await this.props.stripe.createToken({
       name: fullName
     })
-    let response = await fetch('/api/payment/stripe', {
-      method: 'POST',
-      headers: {'Content-Type': 'text/plain'},
-      body: token.id
-    })
+    // let me = await Axios.get('/auth/me');
+    // let meId = me.data.id;
+    let postBody = { token: {...token}, userId : userId};
+    let response = await Axios.post('/api/payment/stripe', postBody)
 
-    if (response.ok) {
+    if (response.status === 200) {
       this.setState({complete: true})
       this.props.order.order.isComplete = true
       this.props.completeOrder(this.props.order.order)
@@ -60,6 +67,7 @@ class CheckoutForm extends Component {
               <input
                 type='text'
                 name='email'
+                value={this.state.email}
                 onChange={this.handleChange}
               />
             </div>

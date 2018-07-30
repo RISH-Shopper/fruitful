@@ -18,11 +18,12 @@ class ChartUsers extends Component {
     return (
       <div className="chartUsers">
         <h3>USERS</h3>
-
         <strong>Orders by User</strong>
+
         <svg width="100%" height="500">
           <BarChart data={data} independent="email" dependent="orders" />
         </svg>
+
       </div>
     )
   }
