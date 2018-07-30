@@ -1,20 +1,22 @@
 import axios from 'axios'
 
+const SET_CART_FROM_SESSION = 'SET_CART_FROM_SESSION'
 const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART'
 const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART'
 const EMPTY_CART = 'EMPTY_CART'
 const INCREMENT_PRODUCT_QUANTITY = 'INCREMENT_PRODUCT_QUANTITY'
 const DECREMENT_PRODUCT_QUANTITY = 'DECREMENT_PRODUCT_QUANTITY'
 
-const initialState = {
-	items: {}
-}
+
+const initialState = {}
+
 
 //let's have the cart hold id: quantity
 //ex: items = {id1: qt1, id2:qty2}
 
 // keeps us from having to store products on store
 //will make it simpler to manipulate cart objects
+export const setCartFromSession = (items) => ({type: SET_CART_FROM_SESSION, items})
 
 export const addProductToCart = productIdAndQuantity => ({
 	type: ADD_PRODUCT_TO_CART,
@@ -43,6 +45,10 @@ export const decrementProductQuantity = productId => ({
 export default function(state = initialState, action) {
 	let newItems, id, quantity
 	switch (action.type) {
+
+    case SET_CART_FROM_SESSION:
+    return {...state, items: action.items}
+
 		case ADD_PRODUCT_TO_CART:
 			id = action.productIdAndQuantity.id
 			quantity = parseInt(action.productIdAndQuantity.quantity)
@@ -91,3 +97,18 @@ export default function(state = initialState, action) {
 			return state
 	}
 }
+
+
+export const getCartFromSession = () => {
+  return async dispatch => {
+    try {
+      const response = await axios.get('/api/session');
+      const items = response.data.items;
+      const action = setCartFromSession(items);
+      dispatch(action);
+    }
+    catch (error){
+      console.log(error)
+    }
+  };
+};
