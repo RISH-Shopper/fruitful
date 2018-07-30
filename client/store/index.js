@@ -24,8 +24,4 @@ export * from './category'
 export * from './cart'
 export * from './order'
 export * from './analytics'
-<<<<<<< HEAD
-
-=======
 export * from './toasts'
->>>>>>> master
