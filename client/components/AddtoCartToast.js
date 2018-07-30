@@ -16,13 +16,10 @@ class AddtoCartToast extends React.Component {
 
   render() {
     return (
-      <div className='toast'>
+      <div>
 
-        <p className='toast__content'>
-        {this.props.toast.text}
-        </p>
         <button onClick={this.onClick}>
-          x
+          x          {this.props.toast.text}
         </button>
 
       </div>

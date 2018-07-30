@@ -23,7 +23,7 @@ class SingleProduct extends React.Component {
 			id: this.props.product.id,
 			quantity: this.state.quantity
     })
-    this.props.addToast({text: "You've added items to your cart"})
+    this.props.addToast({text: `You've added ${this.state.quantity} ${this.props.product.title} to your cart`})
 	}
 
 	render() {
