@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { addProductToCart, removeProduct } from '../store'
-//import thunks from store once created
 
 class SingleProduct extends React.Component {
 	constructor(props) {
@@ -25,7 +24,7 @@ class SingleProduct extends React.Component {
 	}
 
 	render() {
-		const { product, removeProduct } = this.props
+		const { user, product, removeProduct } = this.props
 		const productId = +this.props.match.params.productId
 
 		return (
@@ -49,12 +48,14 @@ class SingleProduct extends React.Component {
 							</select>
 							<button type="submit">Add to Cart</button>
 						</form>
-						<div>
-							<Link to={`/products/${product.id}/edit`}>
-								<button type="button">Edit Product</button>
-							</Link>
-							<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
-						</div>
+						{user.admin && (
+							<div>
+								<Link to={`/products/${product.id}/edit`}>
+									<button type="button">Edit Product</button>
+								</Link>
+								<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+							</div>
+						)}
 					</div>
 				) : (
 					<div>
@@ -67,12 +68,16 @@ class SingleProduct extends React.Component {
 }
 
 const mapStateToProps = function(state, ownProps) {
-	const productId = ownProps.match.params.productId
+	const productId = +ownProps.match.params.productId
 	const products = state.products.products
 
 	if (products) {
-		const product = products.find(product => product.id == productId)
-		return {product, cart: state.cart}
+		const product = products.find(product => product.id === productId)
+		return {
+			product,
+			user: state.user,
+			cart: state.cart
+		}
 	} else {
 		return {cart: state.cart}
 	}

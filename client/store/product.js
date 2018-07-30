@@ -12,8 +12,6 @@ const DELETE_PRODUCT = 'DELETE_PRODUCT'
  * INITIAL STATE
  */
 
- // Dan was here ;)
-
 const initialState = {
   products: []
 }

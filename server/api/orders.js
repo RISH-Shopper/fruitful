@@ -23,20 +23,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:orderId', async (req, res, next) => {
   try {
-    const order = await Order.findById(req.params.orderId, {
-      include: [
-        {
-          model: OrderProducts,
-          where: {
-            orderId: req.params.orderId
-          },
-          include: Product
-        },
-        {
-          model: User
-        }
-      ]
-    })
+    const order = await Order.findById(req.params.orderId)
     if (!order) {
       const err = new Error('Order not found')
       err.status = 404
