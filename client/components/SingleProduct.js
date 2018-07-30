@@ -1,7 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { addProductToCart, removeProduct } from '../store'
+import { addProductToCart, removeProduct} from '../store'
+import Axios from 'axios';
+
 //import thunks from store once created
 
 class SingleProduct extends React.Component {
@@ -21,8 +23,17 @@ class SingleProduct extends React.Component {
 		this.props.addToCart({
 			id: this.props.product.id,
 			quantity: this.state.quantity
-		})
-	}
+    })
+
+  }
+
+
+  async componentDidUpdate(prevProps){
+    if(this.props.cart.items !== prevProps.cart.items)
+    console.log('updated',this.props.cart)
+    // save updated cart state to session
+    await Axios.post('/api/session/', {cart: {items: this.props.cart.items}})
+  }
 
 	render() {
 		const { product, removeProduct } = this.props
@@ -81,7 +92,7 @@ const mapStateToProps = function(state, ownProps) {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		addToCart: product => dispatch(addProductToCart(product)),
-		removeProduct: productId => dispatch(removeProduct(productId, ownProps.history))
+    removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
 	}
 }
 

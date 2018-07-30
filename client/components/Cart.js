@@ -40,8 +40,8 @@ class Cart extends Component {
   }
 
   render() {
-    const productList = this.props.productList
 
+    const productList = this.props.productList
     const totalProductQuantity = productList.reduce(function(
       memo,
       productItem

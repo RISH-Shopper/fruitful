@@ -9,6 +9,7 @@ router.use('/orders', require('./orders'))
 router.use('/payment', require('./payment'))
 router.use('/cart', require ('./cart'))
 router.use('/analytics', require ('./analytics'))
+router.use('/session', require ('./session'))
 router.use(bodyParser.json());
 
 router.use((req, res, next) => {
