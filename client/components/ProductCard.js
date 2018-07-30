@@ -6,15 +6,11 @@ const ProductCard = props => {
 
 	return (
 		<div id="product" key={product.id} className="column">
-			<div className="card border-light mb-3" style={{width: '22rem'}}>
+			<div className="card border-light mb-3" style={{width: '15rem'}}>
 				<h5 class="card-title primary">{product.title}</h5>
 				<Link to={`/products/${product.id}`}>see more </Link>
 				<div>
-					<img
-						className="card-img-top"
-						src={product.photo}
-						alt="Card image cap"
-					/>
+					<img className="card-img-top" src={product.photo} alt="Card image cap" height={220} />
 				</div>
 			</div>
 		</div>
@@ -22,3 +18,4 @@ const ProductCard = props => {
 }
 
 export default ProductCard
+

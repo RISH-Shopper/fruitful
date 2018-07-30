@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ProductCard from './ProductCard'
-import Search from './Search'
 import Sidebar from './Sidebar'
 import { getProducts } from '../store/product'
 
@@ -45,10 +44,9 @@ class Products extends Component {
         <div className= "products">
           <Sidebar />
           <div>
-            <Search />
-            <h1>PRODUCTS</h1>
-            <h3>Currently viewing: {selectCategoryName}</h3>
-
+            <div class="shadow-lg p-3 mb-5 bg-light rounded font-weight-normal text-center">
+              <h3>Currently viewing: {selectCategoryName}</h3>
+            </div>
             <ul className = "card-group">
               {products.map(product => (
                 <ProductCard product={product} key={product.id} />
