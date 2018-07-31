@@ -48,6 +48,7 @@ class SingleProduct extends React.Component {
 							<label>{product.title}</label>
 							<img src={product.photo} />
 							<p>{product.description}</p>
+							<p>{`$${Number(product.price/100).toFixed(2)}`}</p>
 							<select
 								name="quantity"
 								onChange={this.handleChange}
