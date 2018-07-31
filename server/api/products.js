@@ -50,29 +50,35 @@ router.get('/categories/:categoryId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const newProduct = await Product.create(req.body)
-    res.status(201).json(newProduct)
+    if (req.user && req.user.admin){
+      const newProduct = await Product.create(req.body)
+      res.status(201).json(newProduct)
+    } else res.status(404).send("Admin use only.")
   } catch (err) { next(err) }
 })
 
 
 router.put('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.productId)
-    const updatedProduct = await product.update(req.body)
-    res.status(202).json(updatedProduct)
+    if (req.user && req.user.admin){
+      const product = await Product.findById(req.params.productId)
+      const updatedProduct = await product.update(req.body)
+      res.status(202).json(updatedProduct)
+    } else res.status(404).send("Admin use only.")
   } catch (err) { next(err) }
 });
 
 router.delete('/:productId', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.productId)
-    if (!product) {
-      const err = new Error('Product not found!')
-      err.status = 404
-      return next(err)
-    }
-    await product.destroy()
-    res.sendStatus(204)
+    if (req.user && req.user.admin){
+      const product = await Product.findById(req.params.productId)
+      if (!product) {
+        const err = new Error('Product not found!')
+        err.status = 404
+        return next(err)
+      }
+      await product.destroy()
+      res.sendStatus(204)
+    } else res.status(404).send("Admin use only.")
   } catch (err) { next(err) }
 })
