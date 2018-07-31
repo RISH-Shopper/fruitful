@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import AddtoCartToast from './AddtoCartToast'
-import { addProductToCart, removeProduct, addToast} from '../store'
+import { addProductToCart, removeProduct, addToast, removeToast} from '../store'
 import axios from 'axios';
 
 class SingleProduct extends React.Component {
@@ -25,7 +25,8 @@ class SingleProduct extends React.Component {
 		})
 		this.props.addToast({
 			text: `You've added ${this.state.quantity} ${this.props.product.title} to your cart`
-		})
+    })
+    setTimeout(this.props.removeToast, 1500)
 
   }
 
@@ -111,7 +112,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		addToCart: product => dispatch(addProductToCart(product)),
 		removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
-		addToast: toast => dispatch(addToast(toast))
+    addToast: toast => dispatch(addToast(toast)),
+    removeToast: () => dispatch(removeToast())
 	}
 }
 
