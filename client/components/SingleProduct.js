@@ -11,7 +11,7 @@ class SingleProduct extends React.Component {
 		this.state = {
 			quantity: 0
 		}
-	}
+  }
 
 	handleChange = event => {
 		this.setState({quantity: event.target.value})
@@ -32,7 +32,6 @@ class SingleProduct extends React.Component {
 
   async componentDidUpdate(prevProps){
     if(this.props.cart.items !== prevProps.cart.items)
-    console.log('updated',this.props.cart)
     // save updated cart state to session
     await axios.post('/api/session/', {cart: {items: this.props.cart.items}})
   }
