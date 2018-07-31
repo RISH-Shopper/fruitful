@@ -3,7 +3,7 @@ import {CardElement, injectStripe} from 'react-stripe-elements'
 import axios from 'axios';
 
 class CheckoutForm extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       userId: '',
@@ -22,32 +22,23 @@ class CheckoutForm extends Component {
     this.submit = this.submit.bind(this)
   }
 
-  handleChange(evt) {
+  handleChange (evt) {
     this.setState({
       [evt.target.name]: evt.target.value
     })
   }
 
+  async componentDidMount () {
+    let me = await axios.get('/auth/me');
 
-  // async componentDidMount(){
-  //   console.log('PROPS--------', this.props)
-  //   let me = await axios.get('/auth/me');
-  //   console.log('meeeeeee', me)
+    if (me) {
+      this.setState({
+        email: me.data.email
+      })
+    }
+  }
 
-  //   if (me) {
-  //     this.setState({
-  //       email: me.data.email,
-  //       userId: me.data.id
-  //     })
-  //   } else {
-  //     this.setState({
-  //       email: '',
-  //       userId: 0
-  //     })
-  //   }
-  // }
-
-  async submit(evt) {
+  async submit (evt) {
     evt.preventDefault()
     const { fullName } = this.state
     let {token} = await this.props.stripe.createToken({
@@ -70,9 +61,8 @@ class CheckoutForm extends Component {
     }
   }
 
-  render() {
+  render () {
     if (this.state.complete) return <h1>Purchase Complete</h1>
-
 
     return (
       <div className="checkout">
@@ -172,13 +162,10 @@ class CheckoutForm extends Component {
           </div>
         </form>
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <button type='submit' onClick={this.submit}>Send</button>
       </div>
     )
   }
 }
-
-
-
 
 export default injectStripe(CheckoutForm)
