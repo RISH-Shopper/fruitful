@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { addProductToCart, removeProduct} from '../store'
-import Axios from 'axios';
+import axios from 'axios';
 
 //import thunks from store once created
 
@@ -31,7 +31,7 @@ class SingleProduct extends React.Component {
     if(this.props.cart.items !== prevProps.cart.items)
     console.log('updated',this.props.cart)
     // save updated cart state to session
-    await Axios.post('/api/session/', {cart: {items: this.props.cart.items}})
+    await axios.post('/api/session/', {cart: {items: this.props.cart.items}})
   }
 
 	render() {
