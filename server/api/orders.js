@@ -48,7 +48,7 @@ router.put('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const createOrderProducts = await OrderProducts.bulkCreate([req.body])
+    const createOrderProducts = await OrderProducts.bulkCreate(req.body)
     res.status(201).json(createOrderProducts)
   } catch (err) { next(err) }
 })

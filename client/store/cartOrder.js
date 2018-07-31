@@ -39,10 +39,10 @@ export const updateOrder = (order) => {
   }
 }
 
-export const addOrderProducts = (arrayOfProductswithOrderIdproductIdquantityunitPrice) => {
+export const addOrderProducts = (ProductswithOrderIdproductIdquantityunitPrice) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post('/api/orders', arrayOfProductswithOrderIdproductIdquantityunitPrice)
+      const response = await axios.post('/api/orders', ProductswithOrderIdproductIdquantityunitPrice)
       const addedOrderProducts = response.data
       console.log("ADDEDORDERPRODUCTS", addedOrderProducts)
       dispatch(addOrder(addedOrderProducts))
