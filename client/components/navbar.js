@@ -6,7 +6,7 @@ import {logout} from '../store'
 import Search from './Search'
 
 const Navbar = ({isLoggedIn, isAdmin}) => (
-  <div>
+  <div className="navBarFlex">
     <h1>FRUITFUL</h1>
     <nav>
       {isLoggedIn ? (
