@@ -14,7 +14,6 @@ const Welcome = ({isLoggedIn, isAdmin}) => (
           {/* Shown after you log in */}
           <h2><Link to="/products">Continue Shopping</Link></h2>
           <h2><Link to="/cart">View Cart</Link></h2>
-
           {isAdmin && (
             <div>
               <h2><Link to="/addProduct">Add Product</Link></h2>
@@ -27,6 +26,7 @@ const Welcome = ({isLoggedIn, isAdmin}) => (
         <div>
           {/* Shown before you log in */}
           <h2><Link to="/products">Start Shopping</Link></h2>
+          <h2><Link to="/cart">View Cart</Link></h2>
           <h2><Link to="/login">Login</Link></h2>
           <h2><Link to="/signup">Sign Up</Link></h2>
         </div>

@@ -7,7 +7,7 @@ import Search from './Search'
 
 const Navbar = ({isLoggedIn, isAdmin}) => (
   <div className="navBarFlex">
-    <h1>FRUITFUL</h1>
+    <h1><Link to="/welcome">FRUITFUL</Link></h1>
     <nav>
       {isLoggedIn ? (
         <div>

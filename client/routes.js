@@ -26,7 +26,6 @@ class Routes extends Component {
         <Route exact path="/products/:productId" component={SingleProduct} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/analytics" component={Welcome} />
 
         {isLoggedIn && (
           <Switch>
@@ -36,6 +35,7 @@ class Routes extends Component {
             <Route exact path="/orders/:orderId" component={SingleOrder} />
             <Route exact path="/logout" component={LogoutConfirmation} />
             <Route exact path="/fruitfriends" component={FruitFriends} />
+            <Route exact path = "/" component={Welcome} />
             {isAdmin && (
               <Switch>
                 <Route exact path="/orders" component={AllOrders} />
@@ -44,10 +44,11 @@ class Routes extends Component {
                 <Route exact path="/addProduct" component={AddProduct} />
               </Switch>
             )}
+            <Route path = "/" component={Welcome} />
           </Switch>
         )}
         {/* Displays our welcome component as a fallback */}
-        <Route component={Welcome} />
+        <Route path = "/" component={Welcome} />
       </Switch>
     )
   }

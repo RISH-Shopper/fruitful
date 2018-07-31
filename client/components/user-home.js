@@ -15,6 +15,7 @@ export const UserHome = props => {
       <div>
         <h2><Link to="/home/orders">My Orders</Link></h2>
         <h2><Link to="/products">Continue Shopping</Link></h2>
+        <h2><Link to="/cart">View Cart</Link></h2>
       </div>
     </div>
   )
