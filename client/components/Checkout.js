@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Elements, StripeProvider} from 'react-stripe-elements'
 import CheckoutForm from './CheckoutForm'
-import {updateOrder} from '../store/cartOrder'
+import {updateOrder, addOrderProducts} from '../store/cartOrder'
 
 class Checkout extends Component {
   constructor() {
@@ -15,7 +15,7 @@ class Checkout extends Component {
       <div>
         <StripeProvider apiKey="pk_test_6o0z0rTuKNakg2e2aU3iPolu">
           <Elements>
-            <CheckoutForm order={this.props.order} completeOrder={this.props.completeOrder} user={this.props.user} />
+            <CheckoutForm cart={this.props.cart} addOrderProducts={this.props.addOrderProducts} order={this.props.order} completeOrder={this.props.completeOrder} user={this.props.user} />
           </Elements>
         </StripeProvider>
       </div>
@@ -26,13 +26,15 @@ class Checkout extends Component {
 const mapStateToProps = state => {
   return {
     order: state.cartOrder,
-    user: state.user
+    user: state.user,
+    cart: state.cartOrder
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    completeOrder: order => dispatch(updateOrder(order))
+    completeOrder: order => dispatch(updateOrder(order)),
+    addOrderProducts: orderProducts => dispatch(addOrderProducts(orderProducts))
   }
 }
 
