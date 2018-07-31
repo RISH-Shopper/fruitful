@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {createOrder} from '../store/cartOrder'
-import {cartTotalPrice, formatter} from '../store/helper'
-import {getCartFromSession,removeProductFromCart,incrementProductQuantity, decrementProductQuantity} from '../store'
+import PromptCheckout from './PromptCheckout'
+import { cartTotalPrice, formatter } from '../store/helper'
+import { getCartFromSession,removeProductFromCart,incrementProductQuantity, decrementProductQuantity, createOrder } from '../store'
 
 class Cart extends Component {
   componentDidMount() {
@@ -12,11 +12,15 @@ class Cart extends Component {
   handleSubmit = evt => {
     evt.preventDefault()
 
-    this.props.createNewOrder({
-      userId: this.props.user.id || '99',
-      totalPrice: this.props.totalPrice
-    })
-    this.props.history.push('/checkout')
+    if (this.props.user.id) {
+      this.props.createNewOrder({
+        userId: this.props.user.id || '99',
+        totalPrice: this.props.totalPrice
+      })
+      this.props.history.push('/checkout')
+    } else {
+      this.props.history.push('/prompt')
+    }
   }
 
   removeProductFromCart = productId => {
@@ -61,7 +65,7 @@ class Cart extends Component {
   }
 
   render() {
-    const productList = this.props.productList
+    const { productList } = this.props
     const totalProductQuantity = productList.reduce(function(
       memo,
       productItem
