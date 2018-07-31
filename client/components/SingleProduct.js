@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { addProductToCart, removeProduct} from '../store'
+import { addProductToCart, removeProduct, addToast } from '../store'
 import Axios from 'axios';
+import AddtoCartToast from './AddtoCartToast';
 
 //import thunks from store once created
 
@@ -23,7 +24,10 @@ class SingleProduct extends React.Component {
 		this.props.addToCart({
 			id: this.props.product.id,
 			quantity: this.state.quantity
-    })
+		})
+		this.props.addToast({
+			text: `You've added ${this.state.quantity} ${this.props.product.title} to your cart`
+		})
 
   }
 
@@ -35,7 +39,7 @@ class SingleProduct extends React.Component {
   }
 
 	render() {
-		const { product, removeProduct } = this.props
+		const { user, product, removeProduct } = this.props
 		const productId = +this.props.match.params.productId
 
 		return (
@@ -60,11 +64,19 @@ class SingleProduct extends React.Component {
 							<button type="submit">Add to Cart</button>
 						</form>
 						<div>
-							<Link to={`/products/${product.id}/edit`}>
-								<button type="button">Edit Product</button>
-							</Link>
-							<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+							{
+								(this.props.toast.text) ? <AddtoCartToast /> : null
+							}
 						</div>
+						{user.admin && (
+							<div>
+								<Link to={`/products/${product.id}/edit`}>
+									<button type="button">Edit Product</button>
+								</Link>
+								<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+							</div>
+						)}
+
 					</div>
 				) : (
 					<div>
@@ -79,19 +91,29 @@ class SingleProduct extends React.Component {
 const mapStateToProps = function(state, ownProps) {
 	const productId = ownProps.match.params.productId
 	const products = state.products.products
+	const toast = state.toasts.cartToast
 
 	if (products) {
 		const product = products.find(product => product.id == productId)
-		return {product, cart: state.cart}
+		return {
+			product,
+			user: state.user,
+			cart: state.cart,
+			toast
+		}
 	} else {
-		return {cart: state.cart}
+		return {
+			cart: state.cart,
+			toast
+		}
 	}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		addToCart: product => dispatch(addProductToCart(product)),
-    removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
+		removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
+		addToast: toast => dispatch(addToast(toast))
 	}
 }
 
