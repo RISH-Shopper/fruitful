@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import AddtoCartToast from './AddtoCartToast'
 import { addProductToCart, removeProduct, addToast} from '../store'
 import axios from 'axios';
-import AddtoCartToast from './AddtoCartToast'
 
 //import thunks from store once created
 
@@ -61,7 +61,7 @@ class SingleProduct extends React.Component {
 							</select>
 							<button type="submit">Add to Cart</button>
 						</form>
-            {
+              {
                 (this.props.toast.text) ? <AddtoCartToast /> : null
               }
 						<div>
