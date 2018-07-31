@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import {search} from '../store/search'
 
 class Search extends React.Component {
   constructor() {
@@ -18,7 +19,9 @@ class Search extends React.Component {
   }
   handleChange(event) {
     this.setState({productTitle: event.target.value})
+    this.props.search({query: event.target.value, products: this.props.products})
   }
+
   setRedirect() {
     this.setState({
       redirect: true
@@ -51,7 +54,7 @@ class Search extends React.Component {
       <div>
         {this.renderRedirect()}
         <form onSubmit={this.handleSubmit} className="form-inline">
-          <input type="search" name="productTitle" onChange={this.handleChange} className= "form-control" placeholder="Search for product" aria-label="Search"/>
+          <input id='searchInput' type="search" name="productTitle" onChange={this.handleChange} className= "form-control" placeholder="Search for product" aria-label="Search"/>
         </form>
         {this.state.noProductToDisplay ? (
           <h4>No Product Found By That Name</h4>
@@ -67,4 +70,13 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Search)
+const mapDispatchToProps = dispatch => {
+  return {
+    search(queryAndProducts) {
+      dispatch(search(queryAndProducts))
+    }
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)
