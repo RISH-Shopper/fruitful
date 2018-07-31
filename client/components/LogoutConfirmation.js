@@ -62,7 +62,8 @@ class LogoutConfirmation extends Component {
 
         { this.props.productList.length?
           <div>
-          <h3>To keep our delicious stock fresh and available, we cannot hold items in your cart after you log out.</h3>
+          <h3>To keep our delicious stock fresh and available, we cannot hold items beyond your shopping session.</h3>
+          <h3>Your cart will be cleared if you log out.</h3>
           <button type="button" onClick={this.handleCheckout}>Checkout</button>
           <button type="button" onClick={this.handleKeepShopping}>Keep Shopping</button>
         <button type="button" onClick={this.handleLogout}>Log Out</button>
