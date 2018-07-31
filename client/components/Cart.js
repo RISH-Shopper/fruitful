@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import PromptCheckout from './PromptCheckout'
 import { cartTotalPrice, formatter } from '../store/helper'
 import { getCartFromSession,removeProductFromCart,incrementProductQuantity, decrementProductQuantity, createOrder } from '../store'
 import axios from 'axios'
