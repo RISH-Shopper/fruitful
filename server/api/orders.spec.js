@@ -182,7 +182,7 @@ describe('/api/orders', () => {
     it('creates orderProducts instances using POST /api/orders', async () => {
       const res = await request(app)
         .post('/api/orders')
-        .send({orderId: 3, productId: 2, quantity: 5, unitPrice: 500}, {orderId: 3, productId: 1, quantity: 50, unitPrice: 500})
+        .send([{orderId: 3, productId: 2, quantity: 5, unitPrice: 500}, {orderId: 3, productId: 1, quantity: 50, unitPrice: 500}])
         .expect(201)
 console.log("RES>BODY", res.body)
       expect(res.body).to.be.an('array')

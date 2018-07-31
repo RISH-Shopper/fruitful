@@ -28,6 +28,7 @@ class CheckoutForm extends Component {
     })
   }
 
+
   // async componentDidMount(){
   //   console.log('PROPS--------', this.props)
   //   let me = await axios.get('/auth/me');
@@ -59,21 +60,19 @@ class CheckoutForm extends Component {
     }
     let response = await axios.post('/api/payment/stripe', postBody)
 
-
     if (response.status === 200) {
       this.setState({complete: true})
       this.props.order.order.isComplete = true
       this.props.completeOrder(this.props.order.order)
-      //this.props.addOrderProducts(theOrderProductsInfo)
-
+      this.props.addOrderProducts(this.props.arrayOfOrderProducts)
       // clear cart saved on session
       await axios.post('/api/session/', {cart: {}})
-
     }
   }
 
   render() {
     if (this.state.complete) return <h1>Purchase Complete</h1>
+
 
     return (
       <div className="checkout">
@@ -178,5 +177,8 @@ class CheckoutForm extends Component {
     )
   }
 }
+
+
+
 
 export default injectStripe(CheckoutForm)
