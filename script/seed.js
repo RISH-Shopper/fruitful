@@ -131,6 +131,62 @@ async function seed() {
     totalPrice: 500
   })
 
+  const bulkOrders = await Order.bulkCreate([
+    {
+      userId: 2,
+      isComplete: false,
+      totalPrice: 10,
+      createdAt: '2018-06-30 12:16:19.232-04'
+    },
+    {
+      userId: 2,
+      isComplete: false,
+      totalPrice: 150,
+      createdAt: '2018-06-31 12:16:19.232-04'
+
+    },
+    {
+      userId: 1,
+      isComplete: false,
+      totalPrice: 700,
+      createdAt: '2018-04-01 12:16:19.232-04'
+
+    },
+    {
+      userId: 2,
+      isComplete: false,
+      totalPrice: 100,
+      createdAt: '2018-04-30 12:16:19.232-04'
+    },
+    {
+      userId: 2,
+      isComplete: false,
+      totalPrice: 10,
+      createdAt: '2018-03-30 12:16:19.232-04'
+    },
+    {
+      userId: 2,
+      isComplete: false,
+      totalPrice: 150,
+      createdAt: '2018-02-31 12:16:19.232-04'
+
+    },
+    {
+      userId: 1,
+      isComplete: false,
+      totalPrice: 700,
+      createdAt: '2018-05-01 12:16:19.232-04'
+
+    },
+    {
+      userId: 2,
+      isComplete: false,
+      totalPrice: 100,
+      createdAt: '2018-05-30 12:16:19.232-04'
+    },
+  ])
+
+
   // OrderProducts entries
   const orderProduct1 = await OrderProducts.create({
     quantity: 5,
