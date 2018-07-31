@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {createOrder} from '../store/cartOrder'
 import {cartTotalPrice, formatter} from '../store/helper'
-import {getCartFromSession, removeProductFromCart} from '../store'
+import {getCartFromSession,removeProductFromCart,incrementProductQuantity, decrementProductQuantity} from '../store'
 
 class Cart extends Component {
   componentDidMount() {
     this.props.setCartFromSession()
   }
 
-  handleSubmit = (evt) => {
+  handleSubmit = evt => {
     evt.preventDefault()
 
     this.props.createNewOrder({
@@ -19,10 +19,16 @@ class Cart extends Component {
     this.props.history.push('/checkout')
   }
 
-  removeProductFromCart = (productId) => {
-    return () => this.props
-      .deleteProductFromCart(productId)
-      // .then(() => (window.location = '/products'))
+  removeProductFromCart = productId => {
+    return () => this.props.deleteProductFromCart(productId)
+  }
+
+  incrementProductQuantity = productId => {
+    return () => this.props.incrementProductInCart(productId)
+  }
+
+  decrementProductQuantity = productId => {
+    return () => this.props.decrementProductInCart(productId)
   }
 
   renderProductItems = () => {
@@ -34,12 +40,22 @@ class Cart extends Component {
       <div key={productItem.product.id} className="product-item">
         <div>Name: {productItem.product.title}</div>
         <img src={productItem.product.photo} />
-        <button onClick={this.removeProductFromCart(productItem.product.id)}>Remove Item</button>
+        <button onClick={this.removeProductFromCart(productItem.product.id)}>
+          Remove Item
+        </button>
 
         <div>
           Unit Price: {formatter.format(productItem.product.price / 100)}
         </div>
+        <button
+          onClick={this.incrementProductQuantity(productItem.product.id)}
+          className="btn btn-secondary"
+        >
+          {' '}
+          +{' '}
+        </button>
         <div>quantity: {productItem.quantity}</div>
+        <button className="btn btn-secondary" onClick={this.decrementProductQuantity(productItem.product.id)}> - </button>
       </div>
     )
   }
@@ -98,6 +114,14 @@ const mapDispatchToProps = dispatch => {
     setCartFromSession: cart => dispatch(getCartFromSession(cart)),
     deleteProductFromCart: productId => {
       const action = removeProductFromCart(productId)
+      return dispatch(action)
+    },
+    incrementProductInCart: productId => {
+      const action = incrementProductQuantity(productId)
+      return dispatch(action)
+    },
+    decrementProductInCart: productId => {
+      const action = decrementProductQuantity(productId)
       return dispatch(action)
     }
   }
