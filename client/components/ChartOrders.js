@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { VictoryLine, VictoryChart, VictoryTheme } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 import { fetchAnalytics } from '../store'
 
 
@@ -15,6 +15,20 @@ class ChartOrders extends Component {
 
   render() {
     const data = this.props.data
+    const months = {
+      1: "January",
+      2: "February",
+      3: "March",
+      4: "April",
+      5: "May",
+      6: "June",
+      7: "July",
+      8: "August",
+      9: "September",
+      10: "October",
+      11: "November",
+      12: "December"
+    }
 
     if (data.length && data[0].month) {
       return (
@@ -28,6 +42,8 @@ class ChartOrders extends Component {
             domain={{ y: [0, 10] }}
             padding={{ left: 30, right: 30, top: 10, bottom: 200 }}
           >
+            <VictoryAxis tickFormat={tick=>months[tick]}/>
+            <VictoryAxis dependentAxis tickFormat={(tick) => tick}/>
             <VictoryLine
               style={{
                 data: { stroke: "#05ba20" },
