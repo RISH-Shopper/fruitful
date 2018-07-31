@@ -141,7 +141,7 @@ async function seed() {
     {
       userId: 2,
       isComplete: false,
-      totalPrice: 150,
+      totalPrice: 1000,
       createdAt: '2018-06-31 12:16:19.232-04'
 
     },
