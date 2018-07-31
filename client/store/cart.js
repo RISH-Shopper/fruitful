@@ -24,7 +24,7 @@ export const addProductToCart = productIdAndQuantity => ({
 })
 
 //would remove all quantity of particular product
-export const removeProductfromCart = productId => ({
+export const removeProductFromCart = productId => ({
 	type: REMOVE_PRODUCT_FROM_CART,
 	productId
 })
