@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { addProductToCart, removeProduct} from '../store'
-import Axios from 'axios';
+import AddtoCartToast from './AddtoCartToast'
+import { addProductToCart, removeProduct, addToast} from '../store'
+import axios from 'axios';
 
 //import thunks from store once created
 
@@ -24,6 +25,7 @@ class SingleProduct extends React.Component {
 			id: this.props.product.id,
 			quantity: this.state.quantity
     })
+    this.props.addToast({text: `You've added ${this.state.quantity} ${this.props.product.title} to your cart`})
 
   }
 
@@ -31,7 +33,7 @@ class SingleProduct extends React.Component {
     if(this.props.cart.items !== prevProps.cart.items)
     console.log('updated',this.props.cart)
     // save updated cart state to session
-    await Axios.post('/api/session/', {cart: {items: this.props.cart.items}})
+    await axios.post('/api/session/', {cart: {items: this.props.cart.items}})
   }
 
 	render() {
@@ -59,6 +61,9 @@ class SingleProduct extends React.Component {
 							</select>
 							<button type="submit">Add to Cart</button>
 						</form>
+              {
+                (this.props.toast.text) ? <AddtoCartToast /> : null
+              }
 						<div>
 							<Link to={`/products/${product.id}/edit`}>
 								<button type="button">Edit Product</button>
@@ -78,13 +83,14 @@ class SingleProduct extends React.Component {
 
 const mapStateToProps = function(state, ownProps) {
 	const productId = ownProps.match.params.productId
-	const products = state.products.products
+  const products = state.products.products
+  const toast = state.toasts.cartToast
 
 	if (products) {
 		const product = products.find(product => product.id == productId)
-		return {product, cart: state.cart}
+		return {product, cart: state.cart, toast}
 	} else {
-		return {cart: state.cart}
+		return {cart: state.cart, toast}
 	}
 }
 
@@ -92,6 +98,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		addToCart: product => dispatch(addProductToCart(product)),
     removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
+    addToast: toast => (dispatch(addToast(toast)))
 	}
 }
 
