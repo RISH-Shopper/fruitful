@@ -3,11 +3,21 @@ import {connect} from 'react-redux'
 import PromptCheckout from './PromptCheckout'
 import { cartTotalPrice, formatter } from '../store/helper'
 import { getCartFromSession,removeProductFromCart,incrementProductQuantity, decrementProductQuantity, createOrder } from '../store'
+import axios from 'axios'
+
 
 class Cart extends Component {
   componentDidMount() {
     this.props.setCartFromSession()
   }
+
+  async componentDidUpdate(prevProps){
+    console.log(this.props.items, prevProps.items)
+    if(this.props.items !== prevProps.items)
+    // save updated cart state to session
+    await axios.post('/api/session/', {cart: {items: this.props.items}})
+  }
+
 
   handleSubmit = evt => {
     evt.preventDefault()
@@ -109,7 +119,7 @@ const mapStateToProps = state => {
     }
   }
 
-  return {productList, order, user, totalPrice}
+  return {productList, order, user, totalPrice, items}
 }
 
 const mapDispatchToProps = dispatch => {

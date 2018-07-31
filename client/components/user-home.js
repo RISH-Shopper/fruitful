@@ -11,7 +11,7 @@ export const UserHome = props => {
   console.log("USERPROPS", props)
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      <h1>Welcome, {email}</h1>
       <div>
         <h2><Link to="/home/orders">My Orders</Link></h2>
         <h2><Link to="/products">Continue Shopping</Link></h2>
