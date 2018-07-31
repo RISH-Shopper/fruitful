@@ -61,9 +61,6 @@ class SingleProduct extends React.Component {
 							</select>
 							<button type="submit">Add to Cart</button>
 						</form>
-              {
-                (this.props.toast.text) ? <AddtoCartToast /> : null
-              }
 						<div>
 							{
 								(this.props.toast.text) ? <AddtoCartToast /> : null
