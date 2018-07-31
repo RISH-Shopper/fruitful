@@ -15,7 +15,7 @@ class Checkout extends Component {
       <div>
         <StripeProvider apiKey="pk_test_6o0z0rTuKNakg2e2aU3iPolu">
           <Elements>
-            <CheckoutForm order={this.props.order} completeOrder={this.props.completeOrder} />
+            <CheckoutForm order={this.props.order} completeOrder={this.props.completeOrder} user={this.props.user} />
           </Elements>
         </StripeProvider>
       </div>
@@ -24,7 +24,10 @@ class Checkout extends Component {
 }
 
 const mapStateToProps = state => {
-return { order: state.cartOrder }
+  return {
+    order: state.cartOrder,
+    user: state.user
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
