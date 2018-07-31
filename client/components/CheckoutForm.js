@@ -65,7 +65,7 @@ class CheckoutForm extends Component {
       this.props.order.order.isComplete = true
       this.props.completeOrder(this.props.order.order)
       // clear cart saved on session
-      await Axios.post('/api/session/', {cart: {}})
+      await axios.post('/api/session/', {cart: {}})
 
     }
   }
