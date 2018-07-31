@@ -3,23 +3,23 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-export const GET_ORDERS_BY_USER = 'GET_ORDERS_BY_USER'
+export const GET_ANALYTICS = 'GET_ANALYTICS'
 
 /**
  * INITIAL STATE
  */
 
 const initialState = {
-  ordersByUser: []
+  data: []
 }
 
 /**
  * ACTION CREATORS
  */
 
-export const getOrdersByUser = (orders) => ({
-  type: GET_ORDERS_BY_USER,
-  orders
+export const getAnalytics = (data) => ({
+  type: GET_ANALYTICS,
+  data
 })
 
 
@@ -27,11 +27,11 @@ export const getOrdersByUser = (orders) => ({
 /**
  * THUNK CREATORS
  */
- export const fetchOrdersByUser = () => {
+ export const fetchAnalytics = (apiPath) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/analytics/ordersByUser')
-      const action = getOrdersByUser(data)
+      const {data} = await axios.get(`/api/analytics/${apiPath}`)
+      const action = getAnalytics(data)
       dispatch(action)
     }
     catch (err) {
@@ -47,8 +47,8 @@ export const getOrdersByUser = (orders) => ({
  */
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_ORDERS_BY_USER:
-      return { ...state, ordersByUser: action.orders}
+    case GET_ANALYTICS:
+      return { ...state, data: action.data}
     default:
       return state
   }

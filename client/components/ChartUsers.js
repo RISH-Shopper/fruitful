@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { fetchOrdersByUser } from '../store'
-import BarChart from './BarChart'
+import { fetchAnalytics } from '../store'
+import { VictoryBar, VictoryChart, VictoryTheme } from 'victory';
 
 
 
@@ -10,22 +10,38 @@ import BarChart from './BarChart'
 class ChartUsers extends Component {
 
   componentDidMount () {
-    this.props.fetchOrdersByUser()
+    this.props.fetchAnalytics("ordersByUser")
   }
 
   render() {
-    const data = this.props.ordersByUser
-    return (
-      <div className="chartUsers">
-        <h3>USERS</h3>
-        <strong>Orders by User</strong>
+    const data = this.props.data
+    if (data.length && data[0].email) {
+      return (
+        <div className="chartUsers">
+          <h3>USERS</h3>
+          <strong>Orders by User</strong>
+          <VictoryChart
+          theme={VictoryTheme.material}
+          domainPadding={{ y: 10 }}
+          padding={{ left: 150, right: 100, top: 0, bottom: 250}}
 
-        <svg width="100%" height="500">
-          <BarChart data={data} independent="email" dependent="orders" />
-        </svg>
+          >
+          <VictoryBar horizontal
+            style={{
+              data: { fill: "#ffd000" }
+            }}
+            data={data}
+            x="email"
+            y="orders"
+            labels={(d) => `${d.orders} orders`}
+          />
+        </VictoryChart>
 
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return <div>'loading data'</div>
+    }
   }
 }
 
@@ -33,13 +49,13 @@ const mapStateToProps = (state) => {
 	return {
     users: state.users,
     orders: state.order.orders,
-    ordersByUser: state.analytics.ordersByUser
+    data: state.analytics.data
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOrdersByUser: () => dispatch(fetchOrdersByUser())
+    fetchAnalytics: (apiPath) => dispatch(fetchAnalytics(apiPath))
   }
 }
 
