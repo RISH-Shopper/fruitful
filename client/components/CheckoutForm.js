@@ -64,6 +64,8 @@ class CheckoutForm extends Component {
       this.setState({complete: true})
       this.props.order.order.isComplete = true
       this.props.completeOrder(this.props.order.order)
+      this.props.addOrderProducts({orderId: this.props.order.order.id, productId: 2, quantity: 5, unitPrice: 500})
+
       // clear cart saved on session
       await axios.post('/api/session/', {cart: {}})
 
@@ -71,6 +73,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    console.log("CHECKOUTFORMPROPS", this.props)
     if (this.state.complete) return <h1>Purchase Complete</h1>
 
     return (

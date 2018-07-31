@@ -165,3 +165,29 @@ describe('/api/orders/1', () => {
     })
   })
 })
+
+
+describe('/api/orders', () => {
+  beforeEach(() => {
+    return db.sync({force: true})
+  })
+
+  describe('Order routes', () => {
+    beforeEach(async () => {
+      await Product.bulkCreate(products)
+      await Order.bulkCreate(orders)
+
+    })
+
+    it('creates orderProducts instances using POST /api/orders', async () => {
+      const res = await request(app)
+        .post('/api/orders')
+        .send({orderId: 3, productId: 2, quantity: 5, unitPrice: 500}, {orderId: 3, productId: 1, quantity: 50, unitPrice: 500})
+        .expect(201)
+console.log("RES>BODY", res.body)
+      expect(res.body).to.be.an('array')
+      expect(res.body[0]).to.be.an('object')
+    })
+  })
+})
+

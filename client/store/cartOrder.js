@@ -39,6 +39,19 @@ export const updateOrder = (order) => {
   }
 }
 
+export const addOrderProducts = (arrayOfProductswithOrderIdproductIdquantityunitPrice) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post('/api/orders', arrayOfProductswithOrderIdproductIdquantityunitPrice)
+      const addedOrderProducts = response.data
+      console.log("ADDEDORDERPRODUCTS", addedOrderProducts)
+      dispatch(addOrder(addedOrderProducts))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
 export default function(state = initialState, action) {
   switch (action.type) {
 

@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Order} = require('../db/models')
+const {Order, OrderProducts} = require('../db/models')
 module.exports = router
 
 //1. create order by grabbing userId && total price
