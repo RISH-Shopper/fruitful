@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import { removeToast } from "../store/toasts";
+import React from 'react'
+import {connect} from 'react-redux'
+import {removeToast} from '../store/toasts'
 
 class AddtoCartToast extends React.Component {
-  constructor () {
+  constructor() {
     super()
 
     this.onClick = this.onClick.bind(this)
   }
 
-  onClick(evt){
+  onClick(evt) {
     evt.preventDefault()
     this.props.removeToast()
   }
@@ -17,18 +17,13 @@ class AddtoCartToast extends React.Component {
   render() {
     return (
       <div>
-
-        <button onClick={this.onClick}>
-          x          {this.props.toast.text}
+        <button className="btn btn-primary btn-lg" onClick={this.onClick}>
+          {this.props.toast.text}
         </button>
-
       </div>
-    );
+    )
   }
-
-
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -39,7 +34,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     removeToast: () => dispatch(removeToast())
-}
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddtoCartToast);
+export default connect(mapStateToProps, mapDispatchToProps)(AddtoCartToast)
