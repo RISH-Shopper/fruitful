@@ -6,7 +6,7 @@ import { getCartFromSession, logout } from '../store';
 
 
 
-class Cart extends Component {
+class FruitFriends extends Component {
   constructor(){
     super()
   }
@@ -36,15 +36,16 @@ class Cart extends Component {
     this.props.history.push('/products')
   }
 
-  renderProductItems = () => {
-    return this.props.productList.map(this.renderProductItem)
+  renderProductItems = (itemsToRender) => {
+    console.log(this.props.allProducts)
+    return itemsToRender.map(this.renderProductItem)
   }
 
   renderProductItem = productItem => {
     return (
-      <div key={productItem.product.id} className='product-item'>
-        <div>Your {productItem.product.title.toLowerCase()} friends will miss you!</div>
-        <img src={productItem.product.photo} />
+      <div key={productItem.id} className='product-item'>
+        <div>Your {productItem.title.toLowerCase()} friends will miss you!</div>
+        <img src={productItem.photo} />
       </div>
     )
   }
@@ -54,9 +55,13 @@ class Cart extends Component {
 
     return (
       <div className="cart">
-        <h2>Are you sure you want to log out?</h2>
-        <h3>To keep our delicious stock fresh and available, we cannot hold items in your cart after you log out.</h3>
-        {this.renderProductItems()}
+        <h1>Are you sure you want to log out?</h1>
+
+          <div>
+          <h3>Your fruit friends will miss you!</h3>
+          </div>
+
+        {this.renderProductItems(this.props.productList)}
 
         <button type="button" onClick={this.handleCheckout}>Checkout</button>
         <button type="button" onClick={this.handleKeepShopping}>Keep Shopping</button>
@@ -77,11 +82,11 @@ const mapStateToProps = state => {
   for (var productId in items) {
     let product = products.find(product => product.id == productId)
     if (product) {
-      productList.push({product, quantity: items[productId]})
+      productList.push(product)
     }
   }
 
-  return {productList, order, user, totalPrice}
+  return {productList, numProducts: products.length, order, user, totalPrice}
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -94,4 +99,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(mapStateToProps, mapDispatchToProps)(FruitFriends)
