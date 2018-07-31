@@ -67,7 +67,7 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
   padding: 0;
 }
 
-a.close {
+.close {
   background-color: rgb(204,204,204);
   border-radius: 50%;
   color: rgb(255,255,255);
@@ -81,7 +81,7 @@ a.close {
   right: 1.25rem;
 }
 
-a.close:hover {
+.close:hover {
   background-color: #1bc5b3;
   cursor: pointer;
 }
