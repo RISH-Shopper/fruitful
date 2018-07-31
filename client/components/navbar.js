@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import Search from './Search'
 
-const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
+const Navbar = ({isLoggedIn, isAdmin}) => (
   <div>
     <h1>FRUITFUL</h1>
     <nav>
@@ -15,9 +15,8 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
           <Link to="/home">Home</Link>
           <Link to="/products">View Products</Link>
           <Link to="/cart">| View Cart | </Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          <Link to="/logout"> Logout</Link>
+
           {isAdmin && (
             <div>
               <Link to="/addProduct">Add Product</Link>
@@ -50,20 +49,11 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState)(Navbar)
 
 /**
  * PROP TYPES
  */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
