@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
 import axios from 'axios';
+import CheckoutConfirmation from './CheckoutConfirmation'
+
 
 class CheckoutForm extends Component {
   constructor () {
@@ -62,7 +64,8 @@ class CheckoutForm extends Component {
   }
 
   render () {
-    if (this.state.complete) return <h1>Purchase Complete</h1>
+    console.log("CHECKOUTFORMPROPS", this.props)
+    if (this.state.complete) return <CheckoutConfirmation order={this.props.arrayOfOrderProducts} />
 
     return (
       <div className="checkout">
