@@ -36,10 +36,6 @@ class Sidebar extends Component {
                 </div>
               )
             })}
-            <hr />
-            <div>
-              <Search />
-            </div>
             <div>
               <button
                 type="button"
@@ -49,6 +45,10 @@ class Sidebar extends Component {
               >
                 View All
               </button>
+            <hr />
+            <div>
+              <Search />
+            </div>
             </div>
           </ul>
         </div>

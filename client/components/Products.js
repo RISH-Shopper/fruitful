@@ -37,7 +37,7 @@ class Products extends Component {
     } else {
       return (
         <div>
-          <div class="shadow-lg p-3 mb-5 bg-light rounded font-weight-normal text-center">
+          <div className="shadow-lg p-3 mb-5 bg-light rounded font-weight-normal text-center">
             <h3>Currently viewing: {selectCategoryName}</h3>
           </div>
           <ul className="card-group">
