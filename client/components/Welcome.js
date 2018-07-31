@@ -12,7 +12,8 @@ const Welcome = ({isLoggedIn, isAdmin}) => (
       {isLoggedIn ? (
         <div>
           {/* Shown after you log in */}
-          <div><Link to="/products">Start Shopping</Link></div>
+          <div><Link to="/products">Continue Shopping</Link></div>
+          <div><Link to="/cart">View Cart</Link></div>
 
           {isAdmin && (
             <div>

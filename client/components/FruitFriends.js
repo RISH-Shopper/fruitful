@@ -55,10 +55,9 @@ class FruitFriends extends Component {
 
     return (
       <div className="cart">
-        <h1>Are you sure you want to log out?</h1>
 
           <div>
-          <h3>Your fruit friends will miss you!</h3>
+          <h2>Do you really want to abandon your fruit friends?</h2>
           </div>
 
         {this.renderProductItems(this.props.productList)}
