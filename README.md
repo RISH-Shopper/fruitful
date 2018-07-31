@@ -24,4 +24,4 @@ npm run start-dev
 
 ## Linked to deployed version
 
-* Navigate to http://fruitful-shopper.herokuapp.com/products/products/1/edit in browser
+* Navigate to http://fruitful-shopper.herokuapp.com in browser

@@ -59,7 +59,7 @@ class SingleOrder extends Component {
                         <img className='product-img' src={product.product.photo} alt='image' />
                       </td>
                       <td>{product.quantity}</td>
-                      <td>{product.unitPrice}</td>
+                      <td>{`$${Number(product.unitPrice/100).toFixed(2)}`}</td>
                     </tr>
                   ))
                 }
