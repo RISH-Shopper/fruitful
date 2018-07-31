@@ -13,7 +13,8 @@ export const UserHome = props => {
     <div>
       <h3>Welcome, {email}</h3>
       <div>
-        <Link to="/home/orders">My Orders</Link>
+        <h2><Link to="/home/orders">My Orders</Link></h2>
+        <h2><Link to="/products">Continue Shopping</Link></h2>
       </div>
     </div>
   )
