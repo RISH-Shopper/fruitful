@@ -48,7 +48,6 @@ class ChartProducts extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-    users: state.users,
     orders: state.order.orders,
     data: state.analytics.data
   }
