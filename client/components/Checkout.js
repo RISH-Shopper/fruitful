@@ -27,7 +27,7 @@ const mapStateToProps = state => {
   return {
     order: state.cartOrder,
     user: state.user,
-    cart: state.cartOrder
+    cart: state.cart
   }
 }
 
