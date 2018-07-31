@@ -188,61 +188,117 @@ async function seed() {
 
 
   // OrderProducts entries
-  const orderProduct1 = await OrderProducts.create({
-    quantity: 5,
-    unitPrice: 400,
-    orderId: 1,
-    productId: 2
-  })
+  const bulkOrderProducts = await OrderProducts.bulkCreate([
+    {
+      quantity: 1,
+      unitPrice: 100,
+      orderId: 1,
+      productId: 3
+    },
+    {
+      quantity: 2,
+      unitPrice: 100,
+      orderId: 2,
+      productId: 5
+    },
+    {
+      quantity: 3,
+      unitPrice: 100,
+      orderId: 3,
+      productId: 4
+    },
+    {
+      quantity: 1,
+      unitPrice: 100,
+      orderId: 4,
+      productId: 3
+    },
+    {
+      quantity: 2,
+      unitPrice: 150,
+      orderId: 4,
+      productId: 2
+    },
+    {
+      quantity: 3,
+      unitPrice: 100,
+      orderId: 5,
+      productId: 2
+    },
+    {
+      quantity: 1,
+      unitPrice: 200,
+      orderId: 5,
+      productId: 3
+    },
+    {
+      quantity: 3,
+      unitPrice: 100,
+      orderId: 5,
+      productId: 1
+    },
+    {
+      quantity: 1,
+      unitPrice: 10,
+      orderId: 6,
+      productId: 4
+    },
+    {
+      quantity: 3,
+      unitPrice: 100,
+      orderId: 7,
+      productId: 1
+    },
+    {
+      quantity: 1,
+      unitPrice: 500,
+      orderId: 7,
+      productId: 3
+    },
+    {
+      quantity: 1,
+      unitPrice: 200,
+      orderId: 7,
+      productId: 4
+    },
+    {
+      quantity: 1,
+      unitPrice: 700,
+      orderId: 8,
+      productId: 3
+    },
+    {
+      quantity: 1,
+      unitPrice: 100,
+      orderId: 9,
+      productId: 4
+    },
+    {
+      quantity: 1,
+      unitPrice: 10,
+      orderId: 10,
+      productId: 5
+    },
+    {
+      quantity: 1,
+      unitPrice: 150,
+      orderId: 11,
+      productId: 4
+    },
+    {
+      quantity: 1,
+      unitPrice: 700,
+      orderId: 12,
+      productId: 3
+    },
+    {
+      quantity: 1,
+      unitPrice: 100,
+      orderId: 13,
+      productId: 3
+    },
+  ])
 
-  const orderProduct2 = await OrderProducts.create({
-    quantity: 3,
-    unitPrice: 300,
-    orderId: 1,
-    productId: 3
-  })
-
-  const orderProduct3 = await OrderProducts.create({
-    quantity: 14,
-    unitPrice: 100,
-    orderId: 1,
-    productId: 4
-  })
-
-  const orderProduct4 = await OrderProducts.create({
-    quantity: 3,
-    unitPrice: 300,
-    orderId: 2,
-    productId: 1
-  })
-
-  const orderProduct5 = await OrderProducts.create({
-    quantity: 6,
-    unitPrice: 400,
-    orderId: 2,
-    productId: 2
-  })
-
-  const orderProduct6 = await OrderProducts.create({
-    quantity: 5,
-    unitPrice: 400,
-    orderId: 3,
-    productId: 4
-  })
-
-  const orderProduct7 = await OrderProducts.create({
-    quantity: 5,
-    unitPrice: 700,
-    orderId: 4,
-    productId: 1
-  })
-
-  const orderProduct8 = await OrderProducts.create({
-    quantity: 5,
-    unitPrice: 100,
-    orderId: 5,
-    productId: 3
-  })
 
 
   console.log('Success! Product database is seeded!')
