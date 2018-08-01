@@ -57,22 +57,27 @@ class LogoutConfirmation extends Component {
 
 
     return (
-      <div className="cart">
-        <h1>Are you sure you want to log out?</h1>
+      <div className="landingPage" id="logout">
+        <h2>Are you sure you want to leave?</h2>
 
         { this.props.productList.length?
           <div>
+          <div>
           <h3>To keep our delicious stock fresh and available, we cannot hold items beyond your shopping session.</h3>
           <h3>Your cart will be cleared if you log out.</h3>
+          </div>
+          <div>
           <button type="button" onClick={this.handleCheckout}>Checkout</button>
           <button type="button" onClick={this.handleKeepShopping}>Keep Shopping</button>
         <button type="button" onClick={this.handleLogout}>Log Out</button>
           </div>
+          </div>
         : <span>
-        <h3>These {this.props.numProducts} delicious varieties of fruit are waiting for you!</h3>
-        {this.renderProductItems(this.props.allProducts)}
+        <h3>There are {this.props.numProducts} delicious varieties of fruit waiting for you!</h3>
+        <div>
         <button type="button" onClick={this.handleKeepShopping}>Keep Shopping</button>
         <button type="button" onClick={this.handleLogout}>Log Out</button>
+        </div>
         </span>
         }
       </div>

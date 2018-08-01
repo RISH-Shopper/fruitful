@@ -17,7 +17,7 @@ class ChartUsers extends Component {
     const data = this.props.data
     if (data.length && data[0].email) {
       return (
-        <div className="chartUsers">
+        <div className="chart">
           <h2>Orders by User</h2>
           <VictoryChart
           theme={VictoryTheme.material}

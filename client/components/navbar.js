@@ -14,7 +14,7 @@ const Navbar = ({isLoggedIn, isAdmin}) => (
         <div className="loggedInLinks">
           {/* The navbar will show these links after you log in */}
           <div>
-          <Link to="/home">Home</Link>
+          <Link to="/home">Profile</Link>
           <Link to="/products">Shop</Link>
           <Link to="/cart"><img src="cart.png"/>View Cart</Link>
           <Link to="/logout"> Logout</Link>

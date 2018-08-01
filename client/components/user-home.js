@@ -10,12 +10,19 @@ export const UserHome = props => {
   const {email, user} = props
   console.log("USERPROPS", props)
   return (
-    <div>
-      <h1>Welcome, {email}</h1>
+    <div className="landingPage" id="userHome">
+      <h2>Welcome, {email}</h2>
       <div>
-        <h2><Link to="/home/orders">My Orders</Link></h2>
-        <h2><Link to="/products">Continue Shopping</Link></h2>
-        <h2><Link to="/cart">View Cart</Link></h2>
+        <h3><Link to="/home/orders">My Orders</Link></h3>
+        <h3><Link to="/products">Shop Fruit</Link></h3>
+        <h3><Link to="/cart">View Cart</Link></h3>
+        {user.admin && (
+            <div>
+              <h3><Link to="/addProduct">Add Product</Link></h3>
+              <h3><Link to="/orders">View Orders</Link></h3>
+              <h3><Link to="/analytics">Analytics</Link></h3>
+            </div>
+          )}
       </div>
     </div>
   )
