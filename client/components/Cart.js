@@ -54,7 +54,7 @@ class Cart extends Component {
 
   renderProductItem = productItem => {
     return (
-      <div className="row">
+      <div>
         <div className="card" style={{width: '23rem'}}>
           <div class="card">
             <div class="card-body">
@@ -109,7 +109,7 @@ class Cart extends Component {
     )
 
     return (
-      <div className="col-sm-6">
+      <div className="card-group">
         <div className="card" style={{width: '45rem'}}>
           <div class="card-body">
             <h1 className="text-center">CART</h1>

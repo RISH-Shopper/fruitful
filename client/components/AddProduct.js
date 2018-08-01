@@ -49,7 +49,7 @@ class AddProduct extends Component {
 
             <label htmlFor="price" />
             <input type="price" name="price"  onChange={this.handleChange} value={this.state.price}
-            className="form-control" id="emailInput" aria-describedby="price" placeholder="Cost of fruit (ex: 2)" />
+            className="form-control" id="emailInput" aria-describedby="price" placeholder="Cost in cents (ex: 200 for $2)" />
             <small id="price" className="form-text text-muted" />
 
             <label htmlFor="inventory" />

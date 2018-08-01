@@ -2,8 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import AddtoCartToast from './AddtoCartToast'
-import { addProductToCart, removeProduct, addToast, removeToast} from '../store'
-import axios from 'axios';
+import {addProductToCart, removeProduct, addToast, removeToast} from '../store'
+import axios from 'axios'
 
 class SingleProduct extends React.Component {
 	constructor(props) {
@@ -11,7 +11,7 @@ class SingleProduct extends React.Component {
 		this.state = {
 			quantity: 0
 		}
-  }
+	}
 
 	handleChange = event => {
 		this.setState({quantity: event.target.value})
@@ -24,20 +24,23 @@ class SingleProduct extends React.Component {
 			quantity: this.state.quantity
 		})
 		this.props.addToast({
-			text: `You've added ${this.state.quantity} ${this.props.product.title} to your cart`
-    })
-    setTimeout(this.props.removeToast, 1500)
+			text: `You've added ${this.state.quantity} ${
+				this.props.product.title
+			} to your cart`
+		})
+		setTimeout(this.props.removeToast, 1500)
+	}
 
-  }
-
-  async componentDidUpdate(prevProps){
-    if(this.props.cart.items !== prevProps.cart.items)
-    // save updated cart state to session
-    await axios.post('/api/session/', {cart: {items: this.props.cart.items}})
-  }
+	async componentDidUpdate(prevProps) {
+		if (this.props.cart.items !== prevProps.cart.items)
+			// save updated cart state to session
+			await axios.post('/api/session/', {
+				cart: {items: this.props.cart.items}
+			})
+	}
 
 	render() {
-		const { user, product, removeProduct } = this.props
+		const {user, product, removeProduct} = this.props
 		const productId = +this.props.match.params.productId
 
 		return (
@@ -46,11 +49,15 @@ class SingleProduct extends React.Component {
 					<div>
 						<form onSubmit={this.handleSubmit}>
 							<label>
-							<h5 className="text-center">{product.title}</h5></label>
-							<p className="font-weight-light text-left">{`$${Number(product.price/100).toFixed(2)}`}</p>
-							<img src={product.photo} />
+								<h5 className="text-center">{product.title}</h5>
+							</label>
+							<p className="font-weight-light text-left">{`$${Number(
+								product.price / 100
+							).toFixed(2)}`}</p>
+							<img src={product.photo} height={450} width={450}/>
 							<p>{product.description}</p>
-							<select class="btn btn-light dropdown-toggle"
+							<select
+								class="btn btn-light dropdown-toggle"
 								name="quantity"
 								onChange={this.handleChange}
 							>
@@ -61,22 +68,40 @@ class SingleProduct extends React.Component {
 								<option value="4">4</option>
 								<option value="5">5</option>
 							</select>
-							<button type="submit" className="btn btn-success">Add to Cart</button>
+							<button type="submit" className="btn btn-success">
+								Add to Cart
+							</button>
 						</form>
 						<div>
-							{
-								(this.props.toast.text) ? <AddtoCartToast /> : null
-							}
+							{this.props.toast.text ? <AddtoCartToast /> : null}
 						</div>
 						{user.admin && (
 							<div>
 								<Link to={`/products/${product.id}/edit`}>
-									<button type="button" className="btn btn-light">Edit Product</button>
+									<button
+										type="button"
+										className="btn btn-light"
+									>
+										Edit Product
+									</button>
 								</Link>
-								<button type='button' className="btn btn-danger"onClick={() => removeProduct(productId)}>Delete Product</button>
+								<button
+									type="button"
+									className="btn btn-danger"
+									onClick={() => removeProduct(productId)}
+								>
+									Delete Product
+								</button>
+								<a href="/products">
+									<button
+										type="button"
+										className="btn btn-primary"
+									>
+										Continue Shopping
+									</button>
+								</a>
 							</div>
 						)}
-
 					</div>
 				) : (
 					<div>
@@ -112,9 +137,10 @@ const mapStateToProps = function(state, ownProps) {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		addToCart: product => dispatch(addProductToCart(product)),
-		removeProduct: productId => dispatch(removeProduct(productId, ownProps.history)),
-    addToast: toast => dispatch(addToast(toast)),
-    removeToast: () => dispatch(removeToast())
+		removeProduct: productId =>
+			dispatch(removeProduct(productId, ownProps.history)),
+		addToast: toast => dispatch(addToast(toast)),
+		removeToast: () => dispatch(removeToast())
 	}
 }
 
