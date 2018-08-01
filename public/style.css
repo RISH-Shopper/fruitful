@@ -16,6 +16,7 @@ a:active {
   color: rgb(24, 19, 19);
 }
 
+
 .navBar {
   background-color: white;
   color: rgb(24, 19, 19);
@@ -87,7 +88,6 @@ a:active {
 }
 
 .category:hover {
-  background-color: white;
   text-decoration: none;
   background-color: rgb(18, 202, 28);
   color:white;
@@ -113,6 +113,52 @@ a:active {
   color:white;
   border: none;
   font-weight: 400;
+}
+
+.landingPage {
+  background-image: url("cover.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(253, 251, 251);
+
+}
+.landingPage h1 {
+  font-size: 10vw;
+  font-weight: 400;
+  margin-top: .5em;
+  text-shadow: 2px 2px rgba(3, 3, 3, 0.644);
+  border-bottom: solid .15em rgba(253, 251, 251, 0.808);
+  border-top: solid .15em rgba(253, 251, 251, 0.808);
+  padding: .1em .5em
+}
+.landingPage nav div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.landingPage a {
+  color: rgb(253, 251, 251);
+  background-color: rgba(221, 221, 221, 0.37);
+  font-size: 3vw;
+  font-weight: 250;
+  margin-top: .5em;
+  text-shadow: 2px 2px rgba(3, 3, 3, 0.794);
+  border: .1em solid rgba(233, 231, 231, 0.794);
+  border-radius: .1em;
+  padding: .1em .5em
+}
+
+.landingPage a:hover {
+  text-decoration: none;
+  background-color: #1bc5b4a1;
+  border: .1em solid #1bc5b4ec;
+  color:white;
+  padding: .1em .5em
 }
 
 label {

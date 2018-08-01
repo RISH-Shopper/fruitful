@@ -1,13 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {logout} from '../store'
-import Search from './Search'
 
 const Welcome = ({isLoggedIn, isAdmin}) => (
-  <div>
-    <h1>Welcome to Fruitful!</h1>
+  <div className="landingPage">
+    <div><h1>FRUITFUL</h1></div>
     <nav>
       {isLoggedIn ? (
         <div>
