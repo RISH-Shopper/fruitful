@@ -98,6 +98,9 @@ class Cart extends Component {
         </h3>
         <h3 className="total-cost">Total cost: {totalPrice}</h3>
         <button onClick={this.handleSubmit}>Checkout</button>
+        <button>
+         <a a href="/products">Continue Shopping</a>
+         </button>
       </div>
     )
   }
