@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createProduct } from '../store/product'
+=======
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {createProduct} from '../store/product'
+import Form from './Form'
+>>>>>>> master
 
 class AddProduct extends Component {
   constructor() {
@@ -52,7 +59,7 @@ class AddProduct extends Component {
         break
       case 'inventory':
         this.state.inventoryValid = value.match(/^[0-9]*$/)
-        fieldValidationErrors.inventory = inventoryValid
+        fieldValidationErrors.inventory = this.state.inventory
           ? ''
           : ' must be a valid integer'
         break
@@ -132,7 +139,7 @@ class AddProduct extends Component {
               className="form-control"
               id="description"
               aria-describedby="lastName"
-              placeholder="describe your fruit"
+              placeholder="Describe your fruit"
             />
             {this.state.formErrors.description.length > 0 ? (
                 <p>
