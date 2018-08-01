@@ -45,22 +45,23 @@ class SingleProduct extends React.Component {
 				{product ? (
 					<div>
 						<form onSubmit={this.handleSubmit}>
-							<label>{product.title}</label>
+							<label>
+							<h5 className="text-center">{product.title}</h5></label>
+							<p className="font-weight-light text-left">{`$${Number(product.price/100).toFixed(2)}`}</p>
 							<img src={product.photo} />
 							<p>{product.description}</p>
-							<p>{`$${Number(product.price/100).toFixed(2)}`}</p>
-							<select
+							<select class="btn btn-light dropdown-toggle"
 								name="quantity"
 								onChange={this.handleChange}
 							>
-								<option value="0">--</option>
+								<option value="0">Quantity</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
 								<option value="5">5</option>
 							</select>
-							<button type="submit">Add to Cart</button>
+							<button type="submit" className="btn btn-success">Add to Cart</button>
 						</form>
 						<div>
 							{
@@ -70,9 +71,9 @@ class SingleProduct extends React.Component {
 						{user.admin && (
 							<div>
 								<Link to={`/products/${product.id}/edit`}>
-									<button type="button">Edit Product</button>
+									<button type="button" className="btn btn-light">Edit Product</button>
 								</Link>
-								<button type='button' onClick={() => removeProduct(productId)}>Delete Product</button>
+								<button type='button' className="btn btn-danger"onClick={() => removeProduct(productId)}>Delete Product</button>
 							</div>
 						)}
 

@@ -33,13 +33,10 @@ class ChartOrders extends Component {
     if (data.length && data[0].month) {
       return (
         <div className="chartOrders">
-          <h3>ORDERS</h3>
-          <div>Total Orders: {this.props.orders.length} </div>
-
-          <h3>Orders by month</h3>
+          <h2>Orders by month</h2>
           <VictoryChart
             theme={VictoryTheme.material}
-            domain={{ y: [0, 10] }}
+            // domain={{ y: [0, 10] }}
             padding={{ left: 30, right: 30, top: 10, bottom: 200 }}
           >
             <VictoryAxis tickFormat={tick=>months[tick]}/>
@@ -65,7 +62,6 @@ class ChartOrders extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-    users: state.users,
     orders: state.order.orders,
     data: state.analytics.data
   }

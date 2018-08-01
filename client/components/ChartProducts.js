@@ -18,8 +18,7 @@ class ChartProducts extends Component {
     if (data.length && data[0].title) {
       return (
         <div className="chartProducts">
-          <h3>PRODUCTS</h3>
-          <strong>Products By Units Purchased</strong>
+          <h2>Products By Units Purchased</h2>
           <VictoryChart
           theme={VictoryTheme.material}
           domainPadding={{ y: 10 }}

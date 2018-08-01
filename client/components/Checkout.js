@@ -5,20 +5,26 @@ import CheckoutForm from './CheckoutForm'
 import {updateOrder, addOrderProducts} from '../store/cartOrder'
 import {cartTotalPrice, arrayOfProductOrders} from '../store/helper'
 
-
 class Checkout extends Component {
   constructor() {
     super()
   }
 
   render() {
-console.log("CHECKOUTPROPS", this.props)
-
     return (
       <div>
         <StripeProvider apiKey="pk_test_6o0z0rTuKNakg2e2aU3iPolu">
           <Elements>
-            <CheckoutForm arrayOfOrderProducts={this.props.arrayOfOrderProducts} totalPrice={this.props.totalPrice} products={this.props.products} cart={this.props.cart} addOrderProducts={this.props.addOrderProducts} order={this.props.order} completeOrder={this.props.completeOrder} user={this.props.user} />
+            <CheckoutForm
+              arrayOfOrderProducts={this.props.arrayOfOrderProducts}
+              totalPrice={this.props.totalPrice}
+              products={this.props.products}
+              cart={this.props.cart}
+              addOrderProducts={this.props.addOrderProducts}
+              order={this.props.order}
+              completeOrder={this.props.completeOrder}
+              user={this.props.user}
+            />
           </Elements>
         </StripeProvider>
       </div>
@@ -26,11 +32,9 @@ console.log("CHECKOUTPROPS", this.props)
   }
 }
 
-
-
 const mapStateToProps = state => {
-      const totalPrice = (cartTotalPrice(state)*100)
-      const arrayOfOrderProducts = arrayOfProductOrders(state)
+  const totalPrice = cartTotalPrice(state) * 100
+  const arrayOfOrderProducts = arrayOfProductOrders(state)
 
   return {
     order: state.cartOrder,
@@ -39,15 +43,14 @@ const mapStateToProps = state => {
     products: state.products.products,
     totalPrice,
     arrayOfOrderProducts
-    }
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     completeOrder: order => dispatch(updateOrder(order)),
     addOrderProducts: orderProducts => dispatch(addOrderProducts(orderProducts))
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

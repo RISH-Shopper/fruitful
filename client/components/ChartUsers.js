@@ -18,8 +18,7 @@ class ChartUsers extends Component {
     if (data.length && data[0].email) {
       return (
         <div className="chartUsers">
-          <h3>USERS</h3>
-          <strong>Orders by User</strong>
+          <h2>Orders by User</h2>
           <VictoryChart
           theme={VictoryTheme.material}
           domainPadding={{ y: 10 }}
