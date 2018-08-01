@@ -32,8 +32,8 @@ class ChartOrders extends Component {
 
     if (data.length && data[0].month) {
       return (
-        <div className="chartOrders">
-          <h2>Orders by month</h2>
+        <div className="chart">
+          <h2>Orders by Month</h2>
           <VictoryChart
             theme={VictoryTheme.material}
             // domain={{ y: [0, 10] }}

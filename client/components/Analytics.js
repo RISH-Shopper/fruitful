@@ -37,13 +37,14 @@ class Analytics extends Component {
     const Chart = this.state.currentChart
 
     return (
-      <div className="analyticsHome">
-        <h1>ANALYTICS</h1>
-
+      <div>
+      <div className="landingPage" id="analyticsHeader">
+        <h2>ANALYTICS</h2>
         <div className="analyticsButtons">
           <button type="button" value="ChartUsers" onClick={this.handleClick}>Users</button>
           <button type="button" value="ChartOrders" onClick={this.handleClick}>Orders</button>
           <button type="button" value="ChartProducts" onClick={this.handleClick}>Products</button>
+        </div>
         </div>
 
         <div>
