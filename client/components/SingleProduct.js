@@ -144,4 +144,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(SingleProduct)

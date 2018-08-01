@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import ProductCard from './ProductCard'
 import Sidebar from './Sidebar'
 import {getProducts} from '../store/product'
@@ -31,7 +30,6 @@ class Products extends Component {
       ? categories.find(cat => +cat.id === +selectedCategory).title
       : 'All Products'
 
-    console.log(this.props)
     if (!this.props.products.length) {
       return <p>There are currently no available products.</p>
     } else {

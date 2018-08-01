@@ -16,7 +16,6 @@ class Cart extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    console.log(this.props.items, prevProps.items)
     if (this.props.items !== prevProps.items)
       // save updated cart state to session
       await axios.post('/api/session/', {cart: {items: this.props.items}})
@@ -170,4 +169,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart)

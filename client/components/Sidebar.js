@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {selectCategory} from '../store/category'
 import Search from './Search'
 import {search} from '../store/search'
@@ -76,4 +75,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Sidebar)
