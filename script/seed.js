@@ -22,7 +22,13 @@ async function seed() {
   // executed until that promise resolves!
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123', admin: true})
+    User.create({email: 'murphy@email.com', password: '123'}),
+    User.create({email: 'rebecca@fruitful.com', password: '123', admin: true}),
+    User.create({email: 'hawa@fruitful.com', password: '123', admin: true}),
+    User.create({email: 'sarah@fruitful.com', password: '123', admin: true}),
+    User.create({email: 'isabel@fruitful.com', password: '123', admin: true}),
+    User.create({email: 'dan@fruitful.com', password: '123', admin: true}),
+    User.create({email: 'john@fruitful.com', password: '123', admin: true})
   ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
