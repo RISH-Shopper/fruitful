@@ -71,6 +71,14 @@ class SingleProduct extends React.Component {
 							<button type="submit" className="btn btn-success">
 								Add to Cart
 							</button>
+							<a href="/products">
+									<button
+										type="button"
+										className="btn btn-primary"
+									>
+										Continue Shopping
+									</button>
+								</a>
 						</form>
 						<div>
 							{this.props.toast.text ? <AddtoCartToast /> : null}
