@@ -52,7 +52,7 @@ class AddProduct extends Component {
         break
       case 'inventory':
         this.state.inventoryValid = value.match(/^[0-9]*$/)
-        fieldValidationErrors.inventory = this.state.inventory
+        fieldValidationErrors.inventory = inventoryValid
           ? ''
           : ' must be a valid integer'
         break
