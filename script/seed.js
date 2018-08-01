@@ -78,7 +78,7 @@ async function seed() {
 
   const redSeedlessGrapes = await Product.create({
     title: 'Red Seedless Grapes',
-    description: 'insert description here',
+    description: "I'm there for snack time, nap time, and all the times in between!",
     price: 599,
     inventory: 20,
     photo: "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_bf472e46-861d-4fe4-9fbc-8f34c9bb3a98.png"
@@ -86,7 +86,7 @@ async function seed() {
 
   const nectarines = await Product.create({
     title: 'Nectarines',
-    description: 'insert description here',
+    description: "I'm the oft-overlooked cousin of the peach - don't underestimate me!",
     price: 129,
     inventory: 20,
     photo: "http://www.paradisefruit802.com/wp-content/uploads/2016/07/Nectarine.gif"
@@ -94,7 +94,7 @@ async function seed() {
 
   const raspberries = await Product.create({
     title: 'Raspberries',
-    description: 'insert description here',
+    description: "I'm a collection of crimson droplets held together by pure joy!",
     price: 499,
     inventory: 20,
     photo: "https://marulangeneralstore.com/wp-content/uploads/2017/02/Raspberries-Punnet-300x300.jpg"
@@ -102,7 +102,7 @@ async function seed() {
 
   const oranges = await Product.create({
     title: 'Oranges',
-    description: 'insert description here',
+    description: "I'm a sunny standard for all your juicing needs!",
     price: 150,
     inventory: 10,
     photo: "https://i0.wp.com/www.healthfitnessrevolution.com/wp-content/uploads/2016/02/ThinkstockPhotos-494037394.jpg?fit=630%2C558"
@@ -110,7 +110,7 @@ async function seed() {
 
   const avocado = await Product.create({
     title: 'Avocado',
-    description: 'insert description here',
+    description: "I'm the poster child for millenial consumption!",
     price: 599,
     inventory: 10,
     photo: "https://images-na.ssl-images-amazon.com/images/I/51ukRMsmDIL._SY300_QL70_.jpg"
@@ -118,7 +118,7 @@ async function seed() {
 
   const mangoes = await Product.create({
     title: 'Mangoes',
-    description: 'insert description here',
+    description: "I'm as close to a perfect fruit as there's ever been...and humble!",
     price: 419,
     inventory: 20,
     photo: "https://www.fruteriadevalencia.com/wp-content/uploads/2015/02/MANGO-buena.jpg"
@@ -126,7 +126,7 @@ async function seed() {
 
   const redGrapefruit = await Product.create({
     title: 'Red Grapefruit',
-    description: 'insert description here',
+    description: "I'm the perfect combo of tart and sweet!",
     price: 799,
     inventory: 20,
     photo: "https://www.edenbotanicals.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/g/r/grapefruit_canstockphoto11983829.jpg"
@@ -134,7 +134,7 @@ async function seed() {
 
   const pineapple = await Product.create({
     title: 'Pineapple',
-    description: 'insert description here',
+    description: "I'm a symbol of hospitality - and also just super cool!",
     price: 419,
     inventory: 10,
     photo: "https://cdn8.bigcommerce.com/s-q51ae6vv/images/stencil/500x659/products/940/3226/FA_Pineapple__96451.1402897272.jpg?c=2&imbypass=on"
@@ -142,7 +142,7 @@ async function seed() {
 
   const galaApples = await Product.create({
     title: 'Gala Apples',
-    description: 'insert description here',
+    description: "I'm so picture perfect I should be in a gala-ry! Get it?",
     price: 149,
     inventory: 10,
     photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSntiNZHaOwF7RdDk0UuMujTSLcHuSFm8sl1SQ92bwExOaeximD_A"
@@ -150,7 +150,7 @@ async function seed() {
 
   const apricots = await Product.create({
     title: 'Apricots',
-    description: 'insert description here',
+    description: "I'm a tiny golden orb you can bring with you anywhere!",
     price: 190,
     inventory: 10,
     photo: "http://polgarkerteszet.hu/wp-content/uploads/2012/09/canstockphoto686473411.jpg"
@@ -158,7 +158,7 @@ async function seed() {
 
   const cherries = await Product.create({
     title: 'Cherries',
-    description: 'insert description here',
+    description: "I'm a great on-the-go pick-me-up!",
     price: 598,
     inventory: 10,
     photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmx3_v7X7IJoDYGYNJbrNSCwWJcI39fKJiTAjDbBEvV2848aW5gg"
@@ -166,7 +166,7 @@ async function seed() {
 
   const blackberries = await Product.create({
     title: 'Blackberries',
-    description: 'insert description here',
+    description: "I'm full of vine-ripened, sunshine-swelled flavor",
     price: 399,
     inventory: 10,
     photo: "https://images.eatthismuch.com/site_media/img/1339_scotjohns_53d85531-4339-4ad7-bb36-46d72850e4e2.png"
@@ -174,7 +174,7 @@ async function seed() {
 
   const greenSeedlessGrapes = await Product.create({
     title: 'Green Seedless Grapes',
-    description: 'insert description here',
+    description: "I'm easy to eat - have a grape day!",
     price: 599,
     inventory: 10,
     photo: "http://www.jackieleonards.ie/wp-content/uploads/2015/03/green-grapes.png"
@@ -182,7 +182,7 @@ async function seed() {
 
   const watermelon = await Product.create({
     title: 'Watermelon',
-    description: 'insert description here',
+    description: "I'm the epitome of summer!",
     price: 509,
     inventory: 10,
     photo: "https://images.fitpregnancy.mdpcdn.com/sites/fitpregnancy.com/files/styles/width_360/public/field/image/watermelon-wonder-at_0.jpg"
@@ -190,7 +190,7 @@ async function seed() {
 
   const grannySmithApples = await Product.create({
     title: 'Granny Smith Apples',
-    description: 'insert description here',
+    description: "I'm apple-pie-perfect",
     price: 199,
     inventory: 10,
     photo: "https://www.markon.com/sites/default/files/styles/large/public/pi_photos/Apples_Granny_Smith_Hero.jpg"
@@ -198,7 +198,7 @@ async function seed() {
 
   const cantaloupe = await Product.create({
     title: 'Cantaloupe',
-    description: 'insert description here',
+    description: "I'm perfectly pleasant paired with prosciutto",
     price: 349,
     inventory: 10,
     photo: "https://foodsafetyblog.statefoodsafety.com/wp-content/uploads/2014/05/20160122_Dollarphotoclub_55601311_cantaloupe-1024x782.jpg"
@@ -206,7 +206,7 @@ async function seed() {
 
   const kiwi = await Product.create({
     title: 'Kiwi',
-    description: 'insert description here',
+    description: "I'm rough on the outside but a big softy once you get to know me!",
     price: 99,
     inventory: 10,
     photo: "http://xwifekitchen.com/wp-content/uploads/2018/02/kiwi.jpeg"
@@ -214,7 +214,7 @@ async function seed() {
 
   const goldenKiwi = await Product.create({
     title: 'Golden Kiwi',
-    description: 'insert description here',
+    description: "I'm not your everyday kiwi next door!",
     price: 149,
     inventory: 10,
     photo: "https://cdn.shopify.com/s/files/1/0206/9470/products/kiwi_gold_1024x1024.jpg?v=1482250186"
@@ -222,7 +222,7 @@ async function seed() {
 
   const limes = await Product.create({
     title: 'Limes',
-    description: 'insert description here',
+    description:"I'm the key ingredient in guac, mojitos, and key lime pie!",
     price: 99,
     inventory: 10,
     photo: "https://paradisenursery.com/wp-content/uploads/2014/04/Persian-lime.jpg"
@@ -230,7 +230,7 @@ async function seed() {
 
   const fujiApples = await Product.create({
     title: 'Fuji Apples',
-    description: 'insert description here',
+    description: "I'm an apple for apple connoisseurs",
     price: 169,
     inventory: 10,
     photo: "https://image.made-in-china.com/43f34j00UFQtLPidqDzp/Exported-Chinese-Shandong-Fresh-FUJI-Apple.jpg"
@@ -238,7 +238,7 @@ async function seed() {
 
   const plums = await Product.create({
     title: 'Plums',
-    description: 'insert description here',
+    description: "I'm perfectly purple and plump!",
     price: 129,
     inventory: 10,
     photo: "http://www.dljproduce.com/wp-content/uploads/2017/10/Plum_iStock-822420778.jpg"
@@ -246,7 +246,7 @@ async function seed() {
 
   const whitePeaches = await Product.create({
     title: 'White Peaches',
-    description: 'insert description here',
+    description: "I'm worth the mess you'll make eating me!",
     price: 149,
     inventory: 10,
     photo: "https://www.naturehills.com/media/catalog/product/cache/d73a5018306142840707bd616a4ef293/w/h/white-lady-peach-tree-6-800x800.jpg"
@@ -254,7 +254,7 @@ async function seed() {
 
   const seedlessWatermelon = await Product.create({
     title: 'Seedless Watermelon',
-    description: 'insert description here',
+    description: "I'm the perfect summertime snack!",
     price: 615,
     inventory: 10,
     photo: "https://www.whataboutwatermelon.com/wp-content/uploads/2010/09/seedless2.jpg"
@@ -262,7 +262,7 @@ async function seed() {
 
   const rainierCherries = await Product.create({
     title: 'Rainier Cherries',
-    description: 'insert description here',
+    description: "I'm a gem of a cherry variety!",
     price: 599,
     inventory: 10,
     photo: "https://images.eatthismuch.com/site_media/img/139485_test_user_6288648c-96da-4e3f-b871-a3249a4bf31e.png"
@@ -270,7 +270,7 @@ async function seed() {
 
   const clementines = await Product.create({
     title: 'Clementines',
-    description: 'insert description here',
+    description: "I'm a perfect self-contained snack!",
     price: 49,
     inventory: 10,
     photo: "https://nutriliving-images.imgix.net/images/2014/266/1538/D15EB38C-4743-E411-B834-22000AF88B16.jpg?ch=DPR&w=488&h=488&auto=compress,format&dpr=1"
@@ -278,7 +278,7 @@ async function seed() {
 
   const passionfruit = await Product.create({
     title: 'Passion Fruit',
-    description: 'insert description here',
+    description: "I'm zesty and full of life!",
     price: 449,
     inventory: 10,
     photo: "https://www.selinawamucii.com/wp-content/uploads/2014/08/Selina-Wamucii-Passion-Fruit-300x256.jpg"
@@ -286,7 +286,7 @@ async function seed() {
 
   const dragonfruit = await Product.create({
     title: 'Dragonfruit',
-    description: 'insert description here',
+    description: "I'm a fierce once - devour me!",
     price: 419,
     inventory: 10,
     photo: "http://www.tang-freres.fr/wp-content/uploads/produits/fruits/fruit-du-dragon-pitaya.png"
@@ -294,7 +294,7 @@ async function seed() {
 
   const coconut = await Product.create({
     title: 'Coconut',
-    description: 'insert description here',
+    description: "I'm a multifaceted one - eat me for breakfast, lunch, or dinner!",
     price: 519,
     inventory: 10,
     photo: "http://bodaciousolive.com/wp-content/uploads/2015/12/coconut-1024x842.jpg"
@@ -302,7 +302,7 @@ async function seed() {
 
   const mangosteen = await Product.create({
     title: 'Mangosteen',
-    description: 'insert description here',
+    description: "I may sound like a mango but I'm a whole nother beast",
     price: 649,
     inventory: 10,
     photo: "https://cdn.shopify.com/s/files/1/0940/6866/products/shanzhuc-500x500_1024x1024.jpg?v=1467949283"
@@ -310,16 +310,16 @@ async function seed() {
 
   const guava = await Product.create({
     title: 'Guava',
-    description: 'insert description here',
+    description: "I'm delicious whole or in a juice!",
     price: 448,
     inventory: 10,
-    photo: "https://5.imimg.com/data5/RA/LA/MY-46372253/guava-2fperu-500x500.png"
+    photo: "https://d1ubpsppdzqxsq.cloudfront.net/image/300s/ff/80/73/ff80734c6088f31177411d9548bce1daff770716.jpg"
   })
 
 
   const papaya = await Product.create({
     title: 'Papaya',
-    description: 'insert description here',
+    description: "I'm creamy and sweet - what a treat!",
     price: 529,
     inventory: 10,
     photo: "https://www.fruttaweb.com/8371-large_default/fresh-papaya-ready-to-eat.jpg"
@@ -327,7 +327,7 @@ async function seed() {
 
   const durian = await Product.create({
     title: 'Durian',
-    description: 'insert description here',
+    description: "I'm...an acquired taste. Banned on the Singapore subway system!",
     price: 499,
     inventory: 10,
     photo: "https://cdn.shopify.com/s/files/1/0940/6866/products/jack-fruit_1024x1024.jpg?v=1464302411"
@@ -335,7 +335,7 @@ async function seed() {
 
   const rambutan = await Product.create({
     title: 'Rambutan',
-    description: 'insert description here',
+    description: "I'm a unique flavor - try me!",
     price: 519,
     inventory: 10,
     photo: "https://cdn3.volusion.com/oukqz.sbeju/v/vspfiles/photos/Hawaiian-Rambutan-fruit2-2.gif?1531528582"
@@ -343,7 +343,7 @@ async function seed() {
 
   const koreanPear = await Product.create({
     title: 'Korean Pear',
-    description: 'insert description here',
+    description: "I'm crisp like an apple, juicy like a pear!",
     price: 329,
     inventory: 10,
     photo: "https://d1ubpsppdzqxsq.cloudfront.net/image/300s/2c/9d/44/2c9d4474b193dd4b0f7ef635a929afc3c08f8419.jpg"
@@ -351,7 +351,7 @@ async function seed() {
 
   const starfruit = await Product.create({
     title: 'Starfruit',
-    description: 'insert description here',
+    description: "I add to the STAR quality of any fruit salad!",
     price: 319,
     inventory: 10,
     photo: "https://storage.googleapis.com/drhealthbenefits/2017/05/health-benefits-of-starfruit.jpg"
@@ -359,7 +359,7 @@ async function seed() {
 
   const lychee = await Product.create({
     title: 'Lychee',
-    description: 'insert description here',
+    description: "I'm a pearl of sweetness and light",
     price: 399,
     inventory: 10,
     photo: "http://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-Lychee.jpg"
@@ -367,7 +367,7 @@ async function seed() {
 
   const kumquat = await Product.create({
     title: 'Kumquat',
-    description: 'insert description here',
+    description: "I'm a tiny burst of sunshine!",
     price: 309,
     inventory: 10,
     photo: "https://exoticfruitbox.com/wp-content/uploads/2015/10/kumquat.jpg"
@@ -375,7 +375,7 @@ async function seed() {
 
   const figs = await Product.create({
     title: 'Figs',
-    description: 'insert description here',
+    description: "I'm delicious with honey and goat cheese!",
     price: 509,
     inventory: 10,
     photo: "https://4awcmd1th3m1scfs83pxlvbh-wpengine.netdna-ssl.com/wp-content/uploads/2016/08/figs.jpg"
