@@ -34,12 +34,11 @@ class AddProduct extends Component {
     console.log('am i here?????')
     return (
       <div>
-        <h2>New Product Form</h2>
-
 
          <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="title" />
+            <h3 className="font-weight-bold">ADD NEW PRODUCT</h3>
             <input type="text" name="title"  onChange={this.handleChange} value={this.state.title}
             className="form-control col-lg-20s" id="nameInput" aria-describedby="firstName" placeholder="Enter name of fruit" />
             <small id="title" className="form-text text-muted" />
@@ -64,7 +63,7 @@ class AddProduct extends Component {
             className="form-control" id="photo" aria-describedby="gpa" placeholder="Enter url link to photo" />
             <small id="photo" className="form-text text-muted" />
 
-            <button className="btn btn-secondary" type='submit' onClick={this.submit}>Submit</button>
+            <button className="btn btn-secondary col md-4 center-blocks" type='submit' onClick={this.submit}>Submit</button>
 
         </div>
         </form>
