@@ -1,7 +1,13 @@
+<<<<<<< HEAD
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createProduct } from '../store/product'
+=======
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {createProduct} from '../store/product'
 import Form from './Form'
+>>>>>>> master
 
 class AddProduct extends Component {
   constructor() {

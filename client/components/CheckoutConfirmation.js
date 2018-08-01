@@ -15,12 +15,9 @@ class CheckoutConfirmation extends React.Component {
     this.setState({
       price: totalPrice
     })
-
-    }
-
+  }
 
   render() {
-    console.log("CONFIRMATION", this.props)
     return (
     <div><h2>Purchase Complete!  Thank you for your order!</h2>
 

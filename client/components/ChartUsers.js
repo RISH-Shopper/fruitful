@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import { fetchAnalytics } from '../store'
 import { VictoryBar, VictoryChart, VictoryTheme } from 'victory';
 
-
-
-
-
 class ChartUsers extends Component {
 
   componentDidMount () {

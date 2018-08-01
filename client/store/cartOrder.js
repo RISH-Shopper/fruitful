@@ -2,16 +2,12 @@ import axios from 'axios'
 
 const ADD_ORDER = 'ADD_ORDER'
 
-
 const initialState = {}
 
 export const addOrder = order => ({
 	type: ADD_ORDER,
 	receiveOrder: order
 })
-
-
-
 
 //thunks
 export const createOrder = (order) => {
@@ -44,7 +40,6 @@ export const addOrderProducts = (ProductswithOrderIdproductIdquantityunitPrice) 
     try {
       const response = await axios.post('/api/orders', ProductswithOrderIdproductIdquantityunitPrice)
       const addedOrderProducts = response.data
-      console.log("ADDEDORDERPRODUCTS", addedOrderProducts)
       dispatch(addOrder(addedOrderProducts))
     } catch (err) {
       console.log(err)

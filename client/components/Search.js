@@ -76,7 +76,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(search(queryAndProducts))
     }
   }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

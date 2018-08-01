@@ -37,4 +37,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddtoCartToast)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddtoCartToast)

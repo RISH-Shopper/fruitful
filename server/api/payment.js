@@ -7,12 +7,9 @@ module.exports = router
 
 
 router.post("/stripe", async (req, res, next) => {
-  console.log('starting stripe post request')
   try {
     //need to store final price in database/backend to grab the amount to send via Stripe:
     //find most recent order by the logged in user that is not completed and grab that totalPrice
-    console.log('creating order!')
-
     let order = await Order.findOne({
       where: {
         userId: req.body.userId,
