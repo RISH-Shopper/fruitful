@@ -11,9 +11,6 @@ class OrderHistory extends Component {
   render () {
     const { orders, user } = this.props
     const userOrders = orders.filter(order => order.userId === user.id && order.isComplete === true)
-    console.log('CURRENT USER', user)
-    console.log('ALL ORDERS', orders)
-    console.log('COMPLETE ORDERS', userOrders)
 
     if (!userOrders) {
       return (
