@@ -39,4 +39,8 @@ const Product = db.define('product', {
   }
 })
 
+Product.hook('beforeValidate', (product, options) => {
+  product.price = (product.price * 100);
+});
+
 module.exports = Product

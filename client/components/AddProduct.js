@@ -64,6 +64,8 @@ class AddProduct extends Component {
             className="form-control" id="photo" aria-describedby="gpa" placeholder="Enter url link to photo" />
             <small id="photo" className="form-text text-muted" />
 
+            <button className="btn btn-secondary" type='submit' onClick={this.submit}>Submit</button>
+
         </div>
         </form>
       </div>
