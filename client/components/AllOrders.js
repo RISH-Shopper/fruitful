@@ -10,8 +10,9 @@ class AllOrders extends Component {
 
   render () {
     const { orders } = this.props
+    const completeOrders = orders.filter(order => order.isComplete === true)
 
-    if (!orders) {
+    if (!completeOrders) {
       return (
         <div>
           <h2>There are no existing orders.</h2>
@@ -30,7 +31,7 @@ class AllOrders extends Component {
                 <th>Status</th>
               </tr>
               {
-                orders.map(order => (
+                completeOrders.map(order => (
                   <tr key={order.id}>
                     <td>
                       <Link to={`/orders/${order.id}`}>{order.id}</Link>
