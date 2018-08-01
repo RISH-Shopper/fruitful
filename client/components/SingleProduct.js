@@ -74,6 +74,9 @@ class SingleProduct extends React.Component {
 									<button type="button" className="btn btn-light">Edit Product</button>
 								</Link>
 								<button type='button' className="btn btn-danger"onClick={() => removeProduct(productId)}>Delete Product</button>
+							<a href="/products">
+									<button type="button" className="btn btn-primary">Continue Shopping</button>
+								</a>
 							</div>
 						)}
 
