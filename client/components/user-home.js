@@ -16,6 +16,13 @@ export const UserHome = props => {
         <h3><Link to="/home/orders">My Orders</Link></h3>
         <h3><Link to="/products">Continue Shopping</Link></h3>
         <h3><Link to="/cart">View Cart</Link></h3>
+        {user.admin && (
+            <div>
+              <h3><Link to="/addProduct">Add Product</Link></h3>
+              <h3><Link to="/orders">View Orders</Link></h3>
+              <h3><Link to="/analytics">Analytics</Link></h3>
+            </div>
+          )}
       </div>
     </div>
   )
