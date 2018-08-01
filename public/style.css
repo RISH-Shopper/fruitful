@@ -4,7 +4,7 @@ body {
 
 link {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.89)
+  color: rgba(0, 0, 0, 0.89);
 }
 
 a,
@@ -16,11 +16,103 @@ a:active {
   color: rgb(24, 19, 19);
 }
 
-.navBarFlex {
+.navBar {
   background-color: white;
   color: rgb(24, 19, 19);
   display: flex;
   flex-direction: row;
+  font-size: 22px;
+  font-weight: 400;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.89);
+}
+
+.navBar a:hover {
+  color: rgb(18, 202, 28);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navBar nav{
+  width: 100%;
+}
+
+.loggedInLinks {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.adminLinks {
+  color: green;
+}
+
+.navBar img {
+  max-height: 40px;
+}
+
+.navBar a img {
+  max-height: 30px;
+}
+
+.navTitle {
+  font-size: 44px;
+  font-weight: 400;
+}
+
+.sidebar {
+  background-color: white;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.89);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.categoriesTitle {
+  margin-top: 1em;
+}
+
+.category {
+  background-color: white;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.89);
+  border: none;
+  width: 150px;
+  display: flex;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.category:hover {
+  background-color: white;
+  text-decoration: none;
+  background-color: rgb(18, 202, 28);
+  color:white;
+  border: none;
+  font-weight: 400;
+}
+
+.allCategories {
+  background-color: white;
+  text-decoration: none;
+  color: rgb(18, 202, 28);
+  border: none;
+  width: 150px;
+  display: flex;
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.allCategories:hover {
+  background-color: white;
+  text-decoration: none;
+  background-color: rgb(18, 202, 28);
+  color:white;
+  border: none;
+  font-weight: 400;
 }
 
 label {
@@ -29,7 +121,7 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  margin: .5em;
 }
 
 form div {
@@ -101,11 +193,6 @@ div.overlay > div.login-wrapper > div.login-content > h3 {
 .close:hover {
   background-color: #1bc5b3;
   cursor: pointer;
-}
-
-.sidebar {
-  background-color: rgb(218, 218, 218);
-  color: rgb(33, 30, 49);
 }
 
 .products {

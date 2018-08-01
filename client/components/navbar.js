@@ -6,19 +6,21 @@ import {logout} from '../store'
 import Search from './Search'
 
 const Navbar = ({isLoggedIn, isAdmin}) => (
-  <div className="navBarFlex">
-    <h1><Link to="/welcome">FRUITFUL</Link></h1>
+  <div className="navBar">
+    <img src="grape.png"/>
+    <h2 className="navTitle"><Link to="/welcome">FRUITFUL</Link></h2>
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div className="loggedInLinks">
           {/* The navbar will show these links after you log in */}
+          <div>
           <Link to="/home">Home</Link>
-          <Link to="/products">View Products</Link>
-          <Link to="/cart">| View Cart | </Link>
+          <Link to="/products">Shop</Link>
+          <Link to="/cart"><img src="cart.png"/>View Cart</Link>
           <Link to="/logout"> Logout</Link>
-
+          </div>
           {isAdmin && (
-            <div>
+            <div className="adminLinks">
               <Link to="/addProduct">Add Product</Link>
               <Link to="/orders">View Orders</Link>
               <Link to="/analytics">Analytics</Link>
@@ -28,10 +30,10 @@ const Navbar = ({isLoggedIn, isAdmin}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/products">View Products</Link>
+          <Link to="/products">Shop</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
-          <Link to="/cart">| View Cart | </Link>
+          <Link to="/cart"><img src="cart.png"/>View Cart</Link>
         </div>
       )}
     </nav>
