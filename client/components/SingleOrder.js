@@ -11,9 +11,6 @@ class SingleOrder extends Component {
     const { orders } = this.props
     const orderId = +this.props.match.params.orderId
     const singleOrder = orders.find(order => order.id === orderId)
-    console.log('all orders----', orders)
-    console.log('order ID----', orderId)
-    console.log('current order----', singleOrder)
 
     if (!singleOrder) {
       return <div>This order does not exist!</div>
@@ -46,7 +43,6 @@ class SingleOrder extends Component {
                 <tr>
                   <th>Product No.</th>
                   <th>Product Name</th>
-                  <th>Product Image</th>
                   <th>Quantity</th>
                   <th>Unit Price</th>
                 </tr>
@@ -55,9 +51,6 @@ class SingleOrder extends Component {
                     <tr key={product.productId}>
                       <td>{product.productId}</td>
                       <td>{product.product.title}</td>
-                      <td>
-                        <img className='product-img' src={product.product.photo} alt='image' />
-                      </td>
                       <td>{product.quantity}</td>
                       <td>{`$${Number(product.unitPrice/100).toFixed(2)}`}</td>
                     </tr>
@@ -65,6 +58,9 @@ class SingleOrder extends Component {
                 }
               </tbody>
             </table>
+            <div>
+                <p>Total: {`$${Number(singleOrder.totalPrice/100).toFixed(2)}`}</p>
+            </div>
           </div>
         </div>
       )
