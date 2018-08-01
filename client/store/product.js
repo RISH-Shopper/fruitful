@@ -62,7 +62,6 @@ export const updateProduct = (product, productId, history) => {
   return async (dispatch) => {
     try {
       const {data} = await axios.put(`/api/products/${productId}`, product)
-      console.log('DATA-----', data)
       const action = editProduct(data)
       dispatch(action)
       history.push(`/products/${productId}`)

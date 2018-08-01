@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updateProduct} from '../store/product'
-import Form from './Form'
 
 class EditProduct extends Component {
   constructor(props) {
@@ -140,4 +139,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditProduct)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditProduct)

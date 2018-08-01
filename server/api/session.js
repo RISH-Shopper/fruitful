@@ -20,7 +20,6 @@ router.get('/', (req, res, next) => {
 
 // add cart to req.session
 router.post('/', (req, res, next) => {
-  console.log('req.body.cart', req.body.cart)
   try {
     req.session.cart = req.body.cart
     res.status(201).json(req.session.cart)

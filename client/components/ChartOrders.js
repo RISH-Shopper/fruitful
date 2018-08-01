@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 import { fetchAnalytics } from '../store'
 
-
-
-
-
 class ChartOrders extends Component {
 
   componentDidMount () {

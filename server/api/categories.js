@@ -4,7 +4,6 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log('starting all categories api call')
     const categories = await Category.findAll()
     res.status(200).json(categories)
   } catch (err) {
@@ -14,7 +13,6 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:categoryId', async (req, res, next) => {
   try {
-    console.log('starting single category api call')
     const id = req.params.categoryId
     const category = await Category.findById(id)
     if (!category) {

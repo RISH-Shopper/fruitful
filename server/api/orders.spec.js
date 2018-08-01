@@ -184,7 +184,6 @@ describe('/api/orders', () => {
         .post('/api/orders')
         .send([{orderId: 3, productId: 2, quantity: 5, unitPrice: 500}, {orderId: 3, productId: 1, quantity: 50, unitPrice: 500}])
         .expect(201)
-console.log("RES>BODY", res.body)
       expect(res.body).to.be.an('array')
       expect(res.body[0]).to.be.an('object')
     })

@@ -4,8 +4,6 @@ import {createOrder} from '../store/cartOrder'
 import {cartTotalPrice, formatter} from '../store/helper'
 import { getCartFromSession, logout } from '../store';
 
-
-
 class FruitFriends extends Component {
   constructor(){
     super()
@@ -37,7 +35,6 @@ class FruitFriends extends Component {
   }
 
   renderProductItems = (itemsToRender) => {
-    console.log(this.props.allProducts)
     return itemsToRender.map(this.renderProductItem)
   }
 
@@ -51,7 +48,6 @@ class FruitFriends extends Component {
   }
 
   render() {
-
 
     return (
       <div>
@@ -99,4 +95,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FruitFriends)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FruitFriends)

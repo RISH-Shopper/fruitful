@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {createProduct} from '../store/product'
-import Form from './Form'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createProduct } from '../store/product'
 
 class AddProduct extends Component {
   constructor() {
@@ -53,7 +52,7 @@ class AddProduct extends Component {
         break
       case 'inventory':
         this.state.inventoryValid = value.match(/^[0-9]*$/)
-        fieldValidationErrors.inventory = this.state.inventory
+        fieldValidationErrors.inventory = inventoryValid
           ? ''
           : ' must be a valid integer'
         break

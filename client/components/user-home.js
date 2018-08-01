@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
  */
 export const UserHome = props => {
   const {email, user} = props
-  console.log("USERPROPS", props)
+
   return (
     <div className="landingPage" id="userHome">
       <h2>Welcome, {email}</h2>

@@ -3,11 +3,6 @@ import {connect} from 'react-redux'
 import { ChartOrders, ChartProducts, ChartUsers } from './'
 import { fetchOrders } from '../store'
 
-
-
-
-
-
 class Analytics extends Component {
 
   constructor(){
@@ -31,7 +26,6 @@ class Analytics extends Component {
     const {charts} = this.state
     this.setState({currentChart: charts[evt.target.value]})
   }
-
 
   render() {
     const Chart = this.state.currentChart

@@ -38,7 +38,7 @@ async function seed() {
   // Products
   const bananas = await Product.create({
     title: 'Bananas',
-    description: 'insert description here',
+    description: 'I am a delightfully bright, sweet and love mixing it up with other fruit in a salad or smoothie!',
     price: 249,
     inventory: 20,
     photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbcDw4FobLR9UUmXNAwWmpyziACHNQwXb6ZPgsYsASLiE-li1dgQ"
@@ -46,7 +46,7 @@ async function seed() {
 
   const strawberries = await Product.create({
     title: 'Strawberries',
-    description: 'insert description here',
+    description: 'I am irresistably tasty and versatile! In a smoothie? Frozen yogurt? Dipped in chocolate? I am perfect for anything!',
     price: 399,
     inventory: 20,
     photo: "https://media.istockphoto.com/photos/strawberry-picture-id513590708?k=6&m=513590708&s=612x612&w=0&h=bt6vD_Ujv3bqRqqBtJQsNJQANxsjWzvDph6h6Kx4xtM="
@@ -54,7 +54,7 @@ async function seed() {
 
   const blueberries = await Product.create({
     title: 'Blueberries',
-    description: 'insert description here',
+    description: 'I am so tasty and mushy! No teeth? No problem!',
     price: 499,
     inventory: 20,
     photo: "https://images-na.ssl-images-amazon.com/images/I/41LnV22OsiL._SX355_.jpg"
@@ -62,7 +62,7 @@ async function seed() {
 
   const peaches = await Product.create({
     title: 'Peaches',
-    description: 'insert description here',
+    description: 'I am a fuzzy, round, and plump!',
     price: 129,
     inventory: 20,
     photo: "https://d1ubpsppdzqxsq.cloudfront.net/image/300s/93/f1/6b/93f16b908b800c99260d29b6c20794d57d5e062e.jpg"
@@ -70,7 +70,7 @@ async function seed() {
 
   const lemons = await Product.create({
     title: 'Lemons',
-    description: 'insert description here',
+    description: 'I am zesty, I am strong, I am bright and daring, there is nothing I cannot do!',
     price: 159,
     inventory: 20,
     photo: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/766/images/lemon-uses-0-1494115921.jpg"

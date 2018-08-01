@@ -4,8 +4,6 @@ import {createOrder} from '../store/cartOrder'
 import {cartTotalPrice, formatter} from '../store/helper'
 import { getCartFromSession, logout } from '../store';
 
-
-
 class LogoutConfirmation extends Component {
   constructor(){
     super()
@@ -41,7 +39,6 @@ class LogoutConfirmation extends Component {
   }
 
   renderProductItems = (itemsToRender) => {
-    console.log(this.props.allProducts)
     return itemsToRender.map(this.renderProductItem)
   }
 
@@ -54,7 +51,6 @@ class LogoutConfirmation extends Component {
   }
 
   render() {
-
 
     return (
       <div className="landingPage" id="logout">
