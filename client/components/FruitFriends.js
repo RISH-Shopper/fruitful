@@ -44,7 +44,7 @@ class FruitFriends extends Component {
   renderProductItem = productItem => {
     return (
       <div key={productItem.id} className='product-item'>
-        <div>Your {productItem.title.toLowerCase()} friends will miss you!</div>
+        <div>Your {productItem.title.toLowerCase()} will miss you!</div>
         <img src={productItem.photo} />
       </div>
     )
