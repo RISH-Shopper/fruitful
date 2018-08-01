@@ -43,9 +43,9 @@ class FruitFriends extends Component {
 
   renderProductItem = productItem => {
     return (
-      <div key={productItem.id} className='product-item'>
+      <div key={productItem.id} className='fruitFriendCard'>
         <div>Your {productItem.title.toLowerCase()} will miss you!</div>
-        <img src={productItem.photo} />
+        <div><img src={productItem.photo} /></div>
       </div>
     )
   }
@@ -54,7 +54,7 @@ class FruitFriends extends Component {
 
 
     return (
-      <div className="cart">
+      <div className="landingPage" id="fruitFriends">
 
           <div>
           <h2>Do you really want to abandon your fruit friends?</h2>
@@ -64,7 +64,7 @@ class FruitFriends extends Component {
 
         <button type="button" onClick={this.handleCheckout}>Checkout</button>
         <button type="button" onClick={this.handleKeepShopping}>Keep Shopping</button>
-        <button type="button" onClick={this.handleLogout}>Log Out</button>
+        <button type="button" id="finalLogout" onClick={this.handleLogout}>Log Out</button>
       </div>
     )
   }
