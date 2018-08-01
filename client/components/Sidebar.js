@@ -19,15 +19,16 @@ class Sidebar extends Component {
       const categories = this.props.categories
 
       return (
-        <div className="nav flex-column">
-          <h5 className="font-weight-bold">CATEGORIES</h5>
-          <ul>
+        // <div className="nav flex-column">
+        <div className="sidebar">
+          <h3 className="categoriesTitle">CATEGORIES</h3>
+
             {categories.map(category => {
               return (
                 <div key={category.id}>
                   <button
                     type="button"
-                    className="btn btn-primary-md"
+                    className="category"
                     value={category.id}
                     onClick={this.handleClick}
                   >
@@ -39,7 +40,7 @@ class Sidebar extends Component {
             <div>
               <button
                 type="button"
-                className="btn btn-primary btn-lg btn-block"
+                className="allCategories"
                 value={null}
                 onClick={this.handleClick}
               >
@@ -50,7 +51,7 @@ class Sidebar extends Component {
               <Search />
             </div>
             </div>
-          </ul>
+
         </div>
       )
     } else {
