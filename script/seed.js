@@ -27,7 +27,7 @@ async function seed() {
     User.create({email: 'hawa@fruitful.com', password: '123', admin: true}),
     User.create({email: 'sarah@fruitful.com', password: '123', admin: true}),
     User.create({email: 'isabel@fruitful.com', password: '123', admin: true}),
-    User.create({email: 'dan@fruitful.com', password: '123', admin: true}),
+    User.create({email: 'fruitful.com', password: '123', admin: true}),
     User.create({email: 'john@fruitful.com', password: '123', admin: true})
   ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator

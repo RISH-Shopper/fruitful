@@ -14,7 +14,7 @@ export const UserHome = props => {
       <h2>Welcome, {email}</h2>
       <div>
         <h3><Link to="/home/orders">My Orders</Link></h3>
-        <h3><Link to="/products">Continue Shopping</Link></h3>
+        <h3><Link to="/products">Shop Fruit</Link></h3>
         <h3><Link to="/cart">View Cart</Link></h3>
         {user.admin && (
             <div>
